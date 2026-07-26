@@ -175,6 +175,10 @@ LEAF LOADER
 #leafKanan.open{
   transform:translateX(110%);
 }
+
+@media(max-width:500px){
+  .profileCard{ padding:16px; }
+}
 </style>
 </head>
 
@@ -182,8 +186,8 @@ LEAF LOADER
 
 <!-- Opening (daun) -->
 <div id="leafLoader">
-  <div class="leftLeaves" id="leftLeaves"></div>
-  <div class="rightLeaves" id="rightLeaves"></div>
+  <img src="assets/kiri.png" id="leafKiri">
+  <img src="assets/kanan.png" id="leafKanan">
 </div>
 
 <!-- MAIN -->
@@ -210,8 +214,8 @@ LEAF LOADER
     <h2>WELCOME TO MY STORE</h2>
 
     <div class="idCard">
-  <img src="assets/ktp.gif" alt="license card">
-</div>
+      <img src="assets/ktp.gif" alt="license card">
+    </div>
 
     <div class="arrowDown">﹀</div>
 
@@ -224,65 +228,21 @@ LEAF LOADER
 <script>
 const loader = document.getElementById("leafLoader");
 const main = document.getElementById("mainContent");
-const left = document.getElementById("leftLeaves");
-const right = document.getElementById("rightLeaves");
+const leafKiri = document.getElementById("leafKiri");
+const leafKanan = document.getElementById("leafKanan");
 
-const leafImages = [
-  "assets/leaf1.png",
-  "assets/leaf2.png",
-  "assets/leaf3.png",
-  "assets/leaf4.png",
-  "assets/leaf5.png"
-];
-
-function spawnLeaves(container, count){
-  const items = [];
-  for(let i=0;i<count;i++){
-    const leaf = document.createElement("div");
-    leaf.className = "leaf";
-
-    const img = document.createElement("img");
-    img.src = leafImages[Math.floor(Math.random()*leafImages.length)];
-    leaf.appendChild(img);
-
-    const size = 100 + Math.random()*150;
-    leaf.style.width = size+"px";
-    leaf.style.left = Math.random()*100+"%";
-    leaf.style.top = Math.random()*100+"%";
-    leaf.style.transform = `translate(-50%,-50%) rotate(${Math.random()*360}deg)`;
-
-    container.appendChild(leaf);
-    items.push(leaf);
-  }
-  return items;
-}
-
-const leftLeaves = spawnLeaves(left, 20);
-const rightLeaves = spawnLeaves(right, 20);
-
-// Kunci scroll saat opening
 document.body.style.overflow = "hidden";
 
-// Buka daun ke kiri & kanan
+// Buka daun kiri & kanan
 setTimeout(()=>{
-  leftLeaves.forEach((leaf,i)=>{
-    setTimeout(()=>{
-      leaf.style.transform += " translateX(-600px)";
-      leaf.style.opacity = 0;
-    }, i*20);
-  });
-  rightLeaves.forEach((leaf,i)=>{
-    setTimeout(()=>{
-      leaf.style.transform += " translateX(600px)";
-      leaf.style.opacity = 0;
-    }, i*20);
-  });
-}, 400);
+  leafKiri.classList.add("open");
+  leafKanan.classList.add("open");
+}, 500);
 
 // Munculkan konten
 setTimeout(()=>{
   main.classList.add("show");
-}, 1600);
+}, 1400);
 
 // Hapus loader
 setTimeout(()=>{
@@ -292,9 +252,8 @@ setTimeout(()=>{
     loader.remove();
     document.body.style.overflow = "auto";
   }, 600);
-}, 2200);
+}, 1900);
 
-// Tombol close (opsional, sembunyikan card)
 const closeBtn = document.querySelector(".closeBtn");
 if(closeBtn){
   closeBtn.addEventListener("click", ()=>{
