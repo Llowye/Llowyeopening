@@ -148,38 +148,32 @@ LEAF LOADER
   overflow:hidden;
 }
 
-.leftLeaves, .rightLeaves{
+#leafKiri, #leafKanan{
   position:absolute;
   top:0;
-  width:50%;
   height:100%;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  align-items:center;
-  gap:18px;
+  width:auto;
+  min-width:60%;
+  object-fit:cover;
+  transition: transform 1.2s ease-in-out;
 }
 
-.leftLeaves{ left:0; }
-.rightLeaves{ right:0; }
-
-.leaf{
-  position:absolute;
-  width:150px;
-  transition: transform 1.4s ease-in, opacity 1.4s ease-in;
+#leafKiri{
+  left:0;
+  transform:translateX(0);
 }
 
-.leaf img{
-  width:100%;
-  display:block;
-  filter:drop-shadow(0 4px 8px rgba(0,0,0,.25));
-  user-select:none;
-  pointer-events:none;
+#leafKanan{
+  right:0;
+  transform:translateX(0);
 }
 
-@media(max-width:500px){
-  .profileCard{ padding:16px; }
-  .rainbow{ width:130px; }
+#leafKiri.open{
+  transform:translateX(-110%);
+}
+
+#leafKanan.open{
+  transform:translateX(110%);
 }
 </style>
 </head>
