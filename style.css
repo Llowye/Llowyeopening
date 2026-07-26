@@ -229,9 +229,6 @@ overflow:hidden;
 
 }
 
-.leftLeaves,
-.rightLeaves{
-
 position:absolute;
 
 top:0;
@@ -264,9 +261,6 @@ right:0;
 
 }
 
-.leftLeaves img,
-.rightLeaves img{
-
 width:180px;
 
 animation:
@@ -295,8 +289,6 @@ animation:rightOpen 2s forwards;
 
 }
 
-@keyframes leftOpen{
-
 0%{
 
 transform:translateX(0);
@@ -311,8 +303,6 @@ transform:translateX(-120%);
 
 }
 
-@keyframes rightOpen{
-
 0%{
 
 transform:translateX(0);
@@ -326,8 +316,6 @@ transform:translateX(120%);
 }
 
 }
-
-@keyframes floatLeaf{
 
 0%{
 
