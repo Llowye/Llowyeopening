@@ -5,73 +5,311 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Llowye</title>
 
-<link rel="stylesheet" href="style.css">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#fff;
+  overflow:hidden;
+}
+
+/*======================
+MAIN CARD
+=======================*/
+
+#mainContent{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  transform:scale(1.05);
+  transition:1s;
+  background:#fff;
+}
+
+#mainContent.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+.profileCard{
+  width:360px;
+  max-width:92%;
+  padding:20px;
+  background:#fdf8e4;
+  border:3px solid #bfe6f5;
+  border-radius:30px;
+  text-align:center;
+}
+
+.rainbow{
+  width:180px;
+  margin-bottom:10px;
+}
+
+.netflixTitle{
+  background:#000;
+  border-radius:40px;
+  padding:14px 10px;
+  margin-bottom:12px;
+}
+
+.netflixTitle .logo{
+  height:34px;
+}
+
+.topBar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#fdf8e4;
+  border:2px solid #bfe6f5;
+  border-radius:20px;
+  padding:8px 16px;
+  margin-bottom:14px;
+}
+
+.hearts, .icons{
+  display:flex;
+  gap:8px;
+  font-size:18px;
+}
+
+.closeBtn{
+  cursor:pointer;
+  font-weight:bold;
+}
+
+h1{
+  color:#e0195a;
+  font-size:22px;
+  letter-spacing:1px;
+}
+
+h2{
+  color:#1a1a6e;
+  font-size:15px;
+  margin:6px 0 14px;
+}
+
+.idCard{
+  border:2px solid #d9c2d2;
+  border-radius:10px;
+  overflow:hidden;
+  margin-bottom:14px;
+}
+
+.idCard img{
+  width:100%;
+  display:block;
+}
+
+.arrowDown{
+  color:#ff3b3b;
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.openBtn{
+  display:inline-block;
+  background:#3cc6f0;
+  color:#0b2e4f;
+  font-weight:700;
+  text-decoration:none;
+  padding:12px 50px;
+  border-radius:40px;
+  border:2px solid #fff;
+  box-shadow:0 4px 0 #2aa9d1;
+  transition:.2s;
+}
+
+.openBtn:active{
+  transform:translateY(2px);
+  box-shadow:0 2px 0 #2aa9d1;
+}
+
+/*======================
+LEAF LOADER
+=======================*/
+
+#leafLoader{
+  position:fixed;
+  inset:0;
+  background:#fff;
+  z-index:99999;
+  overflow:hidden;
+}
+
+.leftLeaves, .rightLeaves{
+  position:absolute;
+  top:0;
+  width:50%;
+  height:100%;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+}
+
+.leftLeaves{ left:0; }
+.rightLeaves{ right:0; }
+
+.leaf{
+  position:absolute;
+  width:150px;
+  transition: transform 1.4s ease-in, opacity 1.4s ease-in;
+}
+
+.leaf img{
+  width:100%;
+  display:block;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.25));
+  user-select:none;
+  pointer-events:none;
+}
+
+@media(max-width:500px){
+  .profileCard{ padding:16px; }
+  .rainbow{ width:130px; }
+}
+</style>
 </head>
 
 <body>
 
-<!-- Opening -->
+<!-- Opening (daun) -->
 <div id="leafLoader">
-   </div> id="leafContainer"></div>
+  <div class="leftLeaves" id="leftLeaves"></div>
+  <div class="rightLeaves" id="rightLeaves"></div>
 </div>
 
 <!-- MAIN -->
 <div id="mainContent">
 
-<header>
+  <div class="profileCard">
 
-<img src="assets/netflix.png" class="logo">
+    <img src="assets/rainbow.png" class="rainbow">
 
-</header>
+    <div class="netflixTitle">
+      <img src="assets/netflix.png" class="logo">
+    </div>
 
-<section class="profileCard">
+    <div class="topBar">
+      <div class="hearts">💜🩵💗</div>
+      <div class="icons">
+        <span>📶</span>
+        <span>🎵</span>
+        <span class="closeBtn">✕</span>
+      </div>
+    </div>
 
-<div class="photo">
+    <h1>!! HALLO !!</h1>
+    <h2>WELCOME TO MY STORE</h2>
 
-<img src="assets/profile.png">
+    <div class="idCard">
+      <img src="assets/license.png" alt="license card">
+    </div>
 
-</div>
+    <div class="arrowDown">﹀</div>
 
-<h1>LLOWYE</h1>
+    <a href="https://llowyeshop.carrd.co/" class="openBtn">OPEN</a>
 
-<p>
-Welcome To My Website
-</p>
-
-<div class="buttons">
-
-<a
-href="https://llowyeshop.carrd.co/"
-class="openBtn">
-
-OPEN
-
-</a>
-
-<a
-href="https://llowye.github.io/Llowyerecord/"
-class="musicBtn">
-
-🎵
-
-</a>
+  </div>
 
 </div>
 
-<div class="gifBox">
+<script>
+const loader = document.getElementById("leafLoader");
+const main = document.getElementById("mainContent");
+const left = document.getElementById("leftLeaves");
+const right = document.getElementById("rightLeaves");
 
-<img src="assets/chick.gif">
+const leafImages = [
+  "assets/leaf1.png",
+  "assets/leaf2.png",
+  "assets/leaf3.png",
+  "assets/leaf4.png",
+  "assets/leaf5.png"
+];
 
-</div>
+function spawnLeaves(container, count){
+  const items = [];
+  for(let i=0;i<count;i++){
+    const leaf = document.createElement("div");
+    leaf.className = "leaf";
 
-</section>
+    const img = document.createElement("img");
+    img.src = leafImages[Math.floor(Math.random()*leafImages.length)];
+    leaf.appendChild(img);
 
-</div>
+    const size = 100 + Math.random()*150;
+    leaf.style.width = size+"px";
+    leaf.style.left = Math.random()*100+"%";
+    leaf.style.top = Math.random()*100+"%";
+    leaf.style.transform = `translate(-50%,-50%) rotate(${Math.random()*360}deg)`;
 
-<script src="script.js"></script>
+    container.appendChild(leaf);
+    items.push(leaf);
+  }
+  return items;
+}
+
+const leftLeaves = spawnLeaves(left, 20);
+const rightLeaves = spawnLeaves(right, 20);
+
+// Kunci scroll saat opening
+document.body.style.overflow = "hidden";
+
+// Buka daun ke kiri & kanan
+setTimeout(()=>{
+  leftLeaves.forEach((leaf,i)=>{
+    setTimeout(()=>{
+      leaf.style.transform += " translateX(-600px)";
+      leaf.style.opacity = 0;
+    }, i*20);
+  });
+  rightLeaves.forEach((leaf,i)=>{
+    setTimeout(()=>{
+      leaf.style.transform += " translateX(600px)";
+      leaf.style.opacity = 0;
+    }, i*20);
+  });
+}, 400);
+
+// Munculkan konten
+setTimeout(()=>{
+  main.classList.add("show");
+}, 1600);
+
+// Hapus loader
+setTimeout(()=>{
+  loader.style.opacity = "0";
+  loader.style.transition = "0.6s ease";
+  setTimeout(()=>{
+    loader.remove();
+    document.body.style.overflow = "auto";
+  }, 600);
+}, 2200);
+
+// Tombol close (opsional, sembunyikan card)
+const closeBtn = document.querySelector(".closeBtn");
+if(closeBtn){
+  closeBtn.addEventListener("click", ()=>{
+    main.style.display = "none";
+  });
+}
+</script>
 
 </body>
 </html>
