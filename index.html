@@ -53,7 +53,7 @@ MAIN CARD
 .netflixBox{
   background:#fdf8e4;
   border:5px solid #bfe6f5;
-  border-radius:30px;
+  border-radius:70px;
   padding:10px;
   margin-top:-15px;
   margin-bottom:14px;
@@ -69,7 +69,7 @@ MAIN CARD
   align-items:center;
   background:#fdf8e4;
   border:2px solid #bfe6f5;
-  border-radius:16px;
+  border-radius:40px 40px 0 0;
   padding:4px 16px;
   margin-bottom:14px;
 }
@@ -136,18 +136,17 @@ h2{
   font-size:20px;
   margin-bottom:10px;
 }
-
 .openBtn{
   display:inline-block;
-  background:#3cc6f0;
+  background:linear-gradient(180deg, #5cd8ff 0%, #2fb8ea 100%);
   color:#0b2e4f;
   font-weight:700;
   text-decoration:none;
-  padding:12px 50px;
+  padding:14px 55px;
   border-radius:40px;
-  border:2px solid #fff;
-  box-shadow:0 4px 0 #2aa9d1;
-  transition:.2s;
+  border:3px solid #fff;
+  box-shadow:0 8px 0 #1e8fb8, 0 10px 15px rgba(0,0,0,.2);
+  transition:.15s;
 }
 
 .openBtn:active{
@@ -278,6 +277,24 @@ setTimeout(()=>{
   }, 600);
 }, 1900);
 
+  function playClickSound(){
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = "square";
+  osc.frequency.value = 800;
+  gain.gain.setValueAtTime(0.15, ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start();
+  osc.stop(ctx.currentTime + 0.08);
+}
+
+const openBtn = document.querySelector(".openBtn");
+if(openBtn){
+  openBtn.addEventListener("click", playClickSound);
+}
 const closeBtn = document.querySelector(".closeBtn");
 if(closeBtn){
   closeBtn.addEventListener("click", ()=>{
