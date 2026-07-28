@@ -98,7 +98,7 @@ MAIN CARD
   border:10px solid #C8F7F2;
   border-radius:40px 40px 0 0;
   padding:8px 16px;
-  margin:0 auto 7px;
+  margin:0 auto 9px;
   height:50px;
   width:100%;
 }
@@ -133,7 +133,7 @@ h1{
   color:#e0195a;
   font-size:26px;
   letter-spacing:1px;
-  margin:-5px 0 -5px;
+  margin:-10px 0 -10px;
 }
 
 h2{
@@ -141,7 +141,7 @@ h2{
   color:#1a1a6e;
   font-size:20px;
   font-weight:700;
-  margin:-2px 0 -2px;
+  margin:-10px 0 -2px;
 }
 
 .divider{
@@ -153,7 +153,7 @@ h2{
 }
 
 .dividerBottom{
-  margin-top:20px;
+  margin-top:12px;
 }
 
 .idCard{
@@ -171,7 +171,7 @@ h2{
 
 .arrowDown{
   color:#ff3b3b;
-  font-size:35px;
+  font-size:30px;
    margin-top:-10px;
   margin-bottom:-10px;
 }
@@ -192,8 +192,8 @@ h2{
 }
 
 .openBtn:active{
-  transform:translateY(2px);
-  box-shadow:0 2px 0 #2aa9d1;
+  transform:translateY(8px);
+  box-shadow:0 0 0 #2aa9d1;
 }
 @keyframes heartbeat{
   0%, 100%{ transform: scale(1); }
@@ -368,7 +368,10 @@ setTimeout(()=>{
 
 const openBtn = document.querySelector(".openBtn");
 if(openBtn){
-  openBtn.addEventListener("click", playClickSound);
+  openBtn.addEventListener("click", ()=>{
+    playClickSound();
+    openBtn.style.animation = "none";
+  });
 }
 const closeBtn = document.querySelector(".closeBtn");
 if(closeBtn){
