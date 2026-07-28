@@ -183,42 +183,36 @@ LEAF LOADER
   position:absolute;
   top:0;
   height:100%;
-  width:auto;
+  width:52%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #a80000 0px, #c40000 20px, #8a0000 40px
+    );
+  box-shadow: inset -15px 0 30px rgba(0,0,0,.4);
 }
 #leafKiri{
   left:0;
+  border-radius:0 0 60% 0/0 0 40% 0;
 }
 #leafKanan{
   right:0;
+  border-radius:0 0 0 60%/0 0 0 40%;
 }
 #leafKiri.open{
-  animation: arcLeft 1.4s ease-in-out forwards;
+  animation: curtainLeft 1.2s ease-in-out forwards;
 }
 #leafKanan.open{
-  animation: arcRight 1.4s ease-in-out forwards;
+  animation: curtainRight 1.2s ease-in-out forwards;
 }
-@keyframes arcLeft{
-  0%{
-    transform: translate(0,0) rotate(0deg);
-  }
-  50%{
-    transform: translate(-40%,80px) rotate(-12deg);
-  }
-  100%{
-    transform: translate(-115%,-20px) rotate(-25deg);
-  }
+@keyframes curtainLeft{
+  0%{ transform: translateX(0); }
+  100%{ transform: translateX(-100%); }
 }
-
-@keyframes arcRight{
-  0%{
-    transform: translate(0,0) rotate(0deg);
-  }
-  50%{
-    transform: translate(40%,80px) rotate(12deg);
-  }
-  100%{
-    transform: translate(115%,-20px) rotate(25deg);
-  }
+@keyframes curtainRight{
+  0%{ transform: translateX(0); }
+  100%{ transform: translateX(100%); }
+}
 }
 @media(max-width:500px){
   .profileCard{ padding:10px; }
@@ -230,8 +224,8 @@ LEAF LOADER
 
 <!-- Opening (daun) -->
 <div id="leafLoader">
-  <img src="237233-remove-bg-io.png" id="leafKiri">
-  <img src="237232-remove-bg-io.png" id="leafKanan">
+  <div id="leafKiri"></div>
+  <div id="leafKanan"></div>
 </div>
 
 <!-- MAIN -->
