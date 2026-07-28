@@ -187,17 +187,22 @@ LEAF LOADER
   background:
     repeating-linear-gradient(
       90deg,
-      #a80000 0px, #c40000 20px, #8a0000 40px
+      #7a0000 0px,
+      #a80000 15px,
+      #d61f1f 30px,
+      #a80000 45px,
+      #7a0000 60px
     );
-  box-shadow: inset -15px 0 30px rgba(0,0,0,.4);
+  box-shadow: inset -20px 0 40px rgba(0,0,0,.5), inset 20px 0 40px rgba(0,0,0,.3);
+  filter: blur(0.3px);
 }
 #leafKiri{
   left:0;
-  border-radius:0 0 60% 0/0 0 40% 0;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 85% 85%, 70% 75%, 55% 90%, 40% 78%, 25% 92%, 10% 80%, 0 88%);
 }
 #leafKanan{
   right:0;
-  border-radius:0 0 0 60%/0 0 0 40%;
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 90% 80%, 75% 92%, 60% 78%, 45% 90%, 30% 75%, 15% 85%, 0 70%);
 }
 #leafKiri.open{
   animation: curtainLeft 1.2s ease-in-out forwards;
