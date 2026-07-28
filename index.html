@@ -13,7 +13,7 @@
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:999999;
+  z-index:9999;
   overflow:hidden;
 }
 .confetti-piece{
@@ -140,7 +140,7 @@ h2{
   color:#1a1a6e;
   font-size:20px;
   font-weight:700;
-  margin:3px 0 4px;
+  margin:1px 0 4px;
 }
 
 .divider{
@@ -337,7 +337,7 @@ document.body.style.overflow = "hidden";
   function fireConfetti(){
   const container = document.getElementById("confettiContainer");
   const colors = ["#ff595e","#ffca3a","#8ac926","#1982c4","#6a4c93","#ff6fb5"];
-  for(let i=0;i<80;i++){
+  for(let i=0;i<250;i++){
     const piece = document.createElement("div");
     piece.className = "confetti-piece";
     piece.style.left = Math.random()*100 + "vw";
