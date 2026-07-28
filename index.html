@@ -216,6 +216,7 @@ LEAF LOADER
   top:0;
   height:100%;
   width:52%;
+  will-change: transform;
   background:
     repeating-linear-gradient(
       90deg,
@@ -235,22 +236,18 @@ LEAF LOADER
   right:0;
 }
 #leafKiri.open{
-  animation: curtainLeft 1.2s ease-in-out forwards;
+  animation: curtainLeft 2.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 #leafKanan.open{
-  animation: curtainRight 1.2s ease-in-out forwards;
+  animation: curtainRight 2.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 @keyframes curtainLeft{
-  0%{ transform: translateX(0) skewY(0deg); }
-  30%{ transform: translateX(-15%) skewY(-2deg); }
-  60%{ transform: translateX(-55%) skewY(2deg); }
-  100%{ transform: translateX(-100%) skewY(0deg); }
+  0%{ transform: translateX(0); }
+  100%{ transform: translateX(-100%); }
 }
 @keyframes curtainRight{
-  0%{ transform: translateX(0) skewY(0deg); }
-  30%{ transform: translateX(15%) skewY(2deg); }
-  60%{ transform: translateX(55%) skewY(-2deg); }
-  100%{ transform: translateX(100%) skewY(0deg); }
+  0%{ transform: translateX(0); }
+  100%{ transform: translateX(100%); }
 }
 }
 @media(max-width:500px){
@@ -352,7 +349,7 @@ setTimeout(()=>{
     loader.remove();
     document.body.style.overflow = "auto";
   }, 600);
-}, 1900);
+}, 2800);
 
   function playClickSound(){
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
