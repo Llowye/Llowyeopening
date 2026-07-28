@@ -71,7 +71,7 @@ MAIN CARD
 
 .bebek{
   width:180px;
-  margin-top:-55px;
+  margin-top:-70px;
   margin-bottom:-40px;
 }
 
@@ -125,7 +125,7 @@ MAIN CARD
   border-radius:0 0 35px 35px;
   text-align:center;
   width:100%;
-  margin:0 auto;
+  margin:1px 0 2px;
 }
 
 h1{
@@ -133,6 +133,7 @@ h1{
   color:#e0195a;
   font-size:26px;
   letter-spacing:1px;
+  margin:-1px 0 -1px;
 }
 
 h2{
@@ -140,7 +141,7 @@ h2{
   color:#1a1a6e;
   font-size:20px;
   font-weight:700;
-  margin:1px 0 4px;
+  margin:-1px 0 -1px;
 }
 
 .divider{
@@ -170,7 +171,7 @@ h2{
 
 .arrowDown{
   color:#ff3b3b;
-  font-size:45px;
+  font-size:35px;
    margin-top:-10px;
   margin-bottom:-10px;
 }
@@ -322,7 +323,7 @@ document.body.style.overflow = "hidden";
   function fireConfetti(){
   const container = document.getElementById("confettiContainer");
   const colors = ["#ff595e","#ffca3a","#8ac926","#1982c4","#6a4c93","#ff6fb5"];
-  for(let i=0;i<250;i++){
+  for(let i=0;i<100;i++){
     const piece = document.createElement("div");
     piece.className = "confetti-piece";
     piece.style.left = Math.random()*100 + "vw";
