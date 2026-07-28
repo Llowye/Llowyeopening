@@ -9,6 +9,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
+  #confettiContainer{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:999999;
+  overflow:hidden;
+}
+.confetti-piece{
+  position:absolute;
+  top:-10px;
+  width:8px;
+  height:14px;
+  opacity:0.9;
+  animation: confettiFall 1.8s ease-in forwards;
+}
+@keyframes confettiFall{
+  0%{
+    transform: translateY(0) rotate(0deg);
+    opacity:1;
+  }
+  100%{
+    transform: translateY(100vh) rotate(720deg);
+    opacity:0;
+  }
+}
 *{
   margin:0;
   padding:0;
@@ -162,13 +187,20 @@ h2{
   transition:.15s;
   margin-top:-10px;
   margin-bottom:20px;
+  animation: heartbeat 1.2s ease-in-out infinite;
 }
 
 .openBtn:active{
   transform:translateY(2px);
   box-shadow:0 2px 0 #2aa9d1;
 }
-
+@keyframes heartbeat{
+  0%, 100%{ transform: scale(1); }
+  15%{ transform: scale(1.08); }
+  30%{ transform: scale(1); }
+  45%{ transform: scale(1.08); }
+  60%{ transform: scale(1); }
+}
 /*======================
 LEAF LOADER
 =======================*/
@@ -247,6 +279,8 @@ LEAF LOADER
   <div id="leafKanan"></div>
 </div>
 
+  <div id="confettiContainer"></div>
+
 <!-- MAIN -->
 <div id="mainContent">
 
@@ -300,10 +334,26 @@ const leafKanan = document.getElementById("leafKanan");
 
 document.body.style.overflow = "hidden";
 
+  function fireConfetti(){
+  const container = document.getElementById("confettiContainer");
+  const colors = ["#ff595e","#ffca3a","#8ac926","#1982c4","#6a4c93","#ff6fb5"];
+  for(let i=0;i<80;i++){
+    const piece = document.createElement("div");
+    piece.className = "confetti-piece";
+    piece.style.left = Math.random()*100 + "vw";
+    piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+    piece.style.animationDelay = (Math.random()*0.3) + "s";
+    piece.style.animationDuration = (1.2 + Math.random()*1) + "s";
+    piece.style.transform = "rotate(" + (Math.random()*360) + "deg)";
+    container.appendChild(piece);
+    setTimeout(()=> piece.remove(), 2500);
+  }
+}
 // Buka daun kiri & kanan
 setTimeout(()=>{
   leafKiri.classList.add("open");
   leafKanan.classList.add("open");
+  fireConfetti();
 }, 500);
 
 // Hapus loader
