@@ -18,18 +18,20 @@
 }
 .confetti-piece{
   position:absolute;
-  top:-130px;
   width:8px;
   height:14px;
-  opacity:0.9;
-  animation: confettiFall 1.8s ease-in forwards;
+  opacity:1;
+  animation: confettiBurst 1.8s cubic-bezier(0.25,0.8,0.25,1) forwards;
 }
-@keyframes confettiFall{
+@keyframes confettiBurst{
   0%{
-    transform: translateY(0) rotate(0deg);
+    transform: translate(0,0) rotate(0deg);
+  }
+  55%{
+    transform: translate(var(--dx), var(--dy)) rotate(var(--rot));
   }
   100%{
-    transform: translateY(150vh) rotate(720deg);
+    transform: translate(var(--dx), calc(var(--dy) + 250px)) rotate(calc(var(--rot) + 200deg));
   }
 }
 *{
@@ -317,18 +319,26 @@ const leafKanan = document.getElementById("leafKanan");
 
 document.body.style.overflow = "hidden";
 
-  function fireConfetti(){
+function fireConfetti(){
   const container = document.getElementById("confettiContainer");
   const colors = ["#ff595e","#ffca3a","#8ac926","#1982c4","#6a4c93","#ff6fb5"];
   for(let i=0;i<100;i++){
     const piece = document.createElement("div");
     piece.className = "confetti-piece";
-    piece.style.left = Math.random()*100 + "vw";
+    const fromLeft = i % 2 === 0;
+    piece.style.left = fromLeft ? "0px" : "auto";
+    piece.style.right = fromLeft ? "auto" : "0px";
+    piece.style.top = (30 + Math.random()*40) + "vh";
     piece.style.background = colors[Math.floor(Math.random()*colors.length)];
-    piece.style.animationDelay = (Math.random()*0.3) + "s";
-    piece.style.animationDuration = (1.2 + Math.random()*1) + "s";
-    piece.style.transform = "rotate(" + (Math.random()*360) + "deg)";
+    const distance = (30 + Math.random()*55) + "vw";
+    const dx = fromLeft ? distance : "-" + distance;
+    const dy = (Math.random()*60 - 30) + "vh";
+    piece.style.setProperty("--dx", dx);
+    piece.style.setProperty("--dy", dy);
+    piece.style.setProperty("--rot", (Math.random()*720 - 360) + "deg");
+    piece.style.animationDelay = (Math.random()*0.15) + "s";
     container.appendChild(piece);
+    setTimeout(()=> piece.remove(), 2200);
   }
 }
 // Buka daun kiri & kanan
@@ -339,7 +349,7 @@ setTimeout(()=>{
 
 setTimeout(()=>{
   fireConfetti();
-}, 700);
+}, 2300);
 
 // Hapus loader
 setTimeout(()=>{
@@ -349,7 +359,7 @@ setTimeout(()=>{
     loader.remove();
     document.body.style.overflow = "auto";
   }, 600);
-}, 2800);
+}, 5000);
 
   function playClickSound(){
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
