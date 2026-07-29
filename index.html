@@ -18,7 +18,7 @@
 }
 .confetti-piece{
   position:absolute;
-  top:-30px;
+  top:-130px;
   width:8px;
   height:14px;
   opacity:0.9;
@@ -335,8 +335,11 @@ document.body.style.overflow = "hidden";
 setTimeout(()=>{
   leafKiri.classList.add("open");
   leafKanan.classList.add("open");
-  fireConfetti();
 }, 500);
+
+setTimeout(()=>{
+  fireConfetti();
+}, 700);
 
 // Hapus loader
 setTimeout(()=>{
