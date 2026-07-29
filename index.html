@@ -21,6 +21,7 @@
   width:8px;
   height:14px;
   opacity:1;
+  will-change: transform;
   animation: confettiBurst 1.8s cubic-bezier(0.25,0.8,0.25,1) forwards;
 }
 @keyframes confettiBurst{
@@ -31,7 +32,7 @@
     transform: translate(var(--dx), var(--dy)) rotate(var(--rot));
   }
   100%{
-    transform: translate(var(--dx), calc(var(--dy) + 250px)) rotate(calc(var(--rot) + 200deg));
+    transform: translate(var(--dx), 100vh) rotate(calc(var(--rot) + 200deg));
   }
 }
 *{
@@ -322,6 +323,7 @@ document.body.style.overflow = "hidden";
 function fireConfetti(){
   const container = document.getElementById("confettiContainer");
   const colors = ["#ff595e","#ffca3a","#8ac926","#1982c4","#6a4c93","#ff6fb5"];
+  const fragment = document.createDocumentFragment();
   for(let i=0;i<100;i++){
     const piece = document.createElement("div");
     piece.className = "confetti-piece";
@@ -337,9 +339,10 @@ function fireConfetti(){
     piece.style.setProperty("--dy", dy);
     piece.style.setProperty("--rot", (Math.random()*720 - 360) + "deg");
     piece.style.animationDelay = (Math.random()*0.15) + "s";
-    container.appendChild(piece);
-    setTimeout(()=> piece.remove(), 2200);
+    piece.addEventListener("animationend", ()=> piece.remove());
+    fragment.appendChild(piece);
   }
+  container.appendChild(fragment);
 }
 // Buka daun kiri & kanan
 setTimeout(()=>{
