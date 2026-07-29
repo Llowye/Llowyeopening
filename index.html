@@ -13,7 +13,7 @@
   position:fixed;
   inset:0;
   pointer-events:none;
-  z-index:9999;
+  z-index:999999;
   overflow:hidden;
 }
 .confetti-piece{
@@ -29,7 +29,7 @@
     transform: translateY(0) rotate(0deg);
   }
   100%{
-    transform: translateY(50vh) rotate(720deg);
+    transform: translateY(150vh) rotate(720deg);
   }
 }
 *{
@@ -248,7 +248,6 @@ LEAF LOADER
   0%{ transform: translateX(0); }
   100%{ transform: translateX(100%); }
 }
-}
 @media(max-width:500px){
   .profileCard{ padding:10px; }
 }
@@ -330,7 +329,6 @@ document.body.style.overflow = "hidden";
     piece.style.animationDuration = (1.2 + Math.random()*1) + "s";
     piece.style.transform = "rotate(" + (Math.random()*360) + "deg)";
     container.appendChild(piece);
-    setTimeout(()=> piece.remove(), 2500);
   }
 }
 // Buka daun kiri & kanan
