@@ -18,7 +18,7 @@
 }
 .confetti-piece{
   position:absolute;
-  width:8px;
+  width:5px;
   height:14px;
   opacity:1;
   will-change: transform;
@@ -332,8 +332,11 @@ function fireConfetti(){
     piece.style.right = fromLeft ? "auto" : "0px";
     piece.style.top = (30 + Math.random()*40) + "vh";
     piece.style.background = colors[Math.floor(Math.random()*colors.length)];
-    const distance = (30 + Math.random()*55) + "vw";
+
+    // jarak dipersempit & digeser ke area tengah dengan sedikit offset silang
+    const distance = (44 + Math.random()*14) + "vw"; // 44vw–58vw
     const dx = fromLeft ? distance : "-" + distance;
+
     const dy = (Math.random()*60 - 30) + "vh";
     piece.style.setProperty("--dx", dx);
     piece.style.setProperty("--dy", dy);
@@ -341,7 +344,7 @@ function fireConfetti(){
     piece.style.animationDelay = (Math.random()*0.15) + "s";
     piece.addEventListener("animationend", ()=> piece.remove());
     fragment.appendChild(piece);
-  }
+}
   container.appendChild(fragment);
 }
 // Buka daun kiri & kanan
