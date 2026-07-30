@@ -16,13 +16,39 @@
   z-index:9998;
   overflow:hidden;
 }
-.confetti-piece{
+ .confetti-piece{
   position:absolute;
-  width:5px;
-  height:14px;
   opacity:1;
   will-change: transform;
   animation: confettiBurst 1.8s cubic-bezier(0.25,0.8,0.25,1) forwards;
+}
+
+.confetti-square{
+  width:5px;
+  height:14px;
+}
+
+.confetti-circle{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+}
+
+.confetti-star{
+  width:12px;
+  height:12px;
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%,
+    2% 35%, 39% 35%
+  );
+  animation: confettiBurst 1.8s cubic-bezier(0.25,0.8,0.25,1) forwards,
+              twinkle 0.4s ease-in-out infinite;
+}
+
+@keyframes twinkle{
+  0%, 100%{ opacity:1; filter:brightness(1); }
+  50%{ opacity:0.5; filter:brightness(1.8) drop-shadow(0 0 4px currentColor); }
 }
 @keyframes confettiBurst{
   0%{
@@ -323,20 +349,22 @@ document.body.style.overflow = "hidden";
 function fireConfetti(){
   const container = document.getElementById("confettiContainer");
   const colors = ["#ff595e","#ffca3a","#8ac926","#1982c4","#6a4c93","#ff6fb5"];
+  const shapes = ["confetti-square", "confetti-circle", "confetti-star"];
   const fragment = document.createDocumentFragment();
+
   for(let i=0;i<100;i++){
     const piece = document.createElement("div");
-    piece.className = "confetti-piece";
+    const shape = shapes[Math.floor(Math.random()*shapes.length)];
+    piece.className = "confetti-piece " + shape;
+
     const fromLeft = i % 2 === 0;
     piece.style.left = fromLeft ? "0px" : "auto";
     piece.style.right = fromLeft ? "auto" : "0px";
     piece.style.top = (10 + Math.random()*70) + "vh";
     piece.style.background = colors[Math.floor(Math.random()*colors.length)];
 
-    // nyebar rata ke seluruh lebar halaman, dari deket ke jauh banget
-    const distance = (10 + Math.random()*90) + "vw"; // 10vw–100vw
+    const distance = (10 + Math.random()*90) + "vw";
     const dx = fromLeft ? distance : "-" + distance;
-
     const dy = (Math.random()*80 - 40) + "vh";
     piece.style.setProperty("--dx", dx);
     piece.style.setProperty("--dy", dy);
@@ -344,7 +372,7 @@ function fireConfetti(){
     piece.style.animationDelay = (Math.random()*0.15) + "s";
     piece.addEventListener("animationend", ()=> piece.remove());
     fragment.appendChild(piece);
-}
+  }
   container.appendChild(fragment);
 }
 // Buka daun kiri & kanan
