@@ -330,14 +330,14 @@ function fireConfetti(){
     const fromLeft = i % 2 === 0;
     piece.style.left = fromLeft ? "0px" : "auto";
     piece.style.right = fromLeft ? "auto" : "0px";
-    piece.style.top = (30 + Math.random()*40) + "vh";
+    piece.style.top = (10 + Math.random()*70) + "vh";
     piece.style.background = colors[Math.floor(Math.random()*colors.length)];
 
-    // jarak dipersempit & digeser ke area tengah dengan sedikit offset silang
-    const distance = (44 + Math.random()*14) + "vw"; // 44vw–58vw
+    // nyebar rata ke seluruh lebar halaman, dari deket ke jauh banget
+    const distance = (10 + Math.random()*90) + "vw"; // 10vw–100vw
     const dx = fromLeft ? distance : "-" + distance;
 
-    const dy = (Math.random()*60 - 30) + "vh";
+    const dy = (Math.random()*80 - 40) + "vh";
     piece.style.setProperty("--dx", dx);
     piece.style.setProperty("--dy", dy);
     piece.style.setProperty("--rot", (Math.random()*720 - 360) + "deg");
