@@ -361,7 +361,11 @@ function fireConfetti(){
     piece.style.left = fromLeft ? "0px" : "auto";
     piece.style.right = fromLeft ? "auto" : "0px";
     piece.style.top = (10 + Math.random()*70) + "vh";
-    piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+
+    // bintang selalu emas, bentuk lain tetep random warna-warni
+    piece.style.background = (shape === "confetti-star")
+      ? "#FFD700"
+      : colors[Math.floor(Math.random()*colors.length)];
 
     const distance = (10 + Math.random()*90) + "vw";
     const dx = fromLeft ? distance : "-" + distance;
