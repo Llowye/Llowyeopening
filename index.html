@@ -18,9 +18,11 @@
 }
  .confetti-piece{
   position:absolute;
+   width:8px;
+   height:14px;
   opacity:1;
   will-change: transform;
-  animation: confettiBurst 1.8s cubic-bezier(0.25,0.8,0.25,1) forwards;
+  animation: confettiBurst 1.6s ease-out forwards;
 }
 
 .confetti-square{
@@ -54,13 +56,10 @@
   0%{
     transform: translate(0,0) rotate(0deg);
   }
-  55%{
-    transform: translate(var(--dx), var(--dy)) rotate(var(--rot));
-  }
   100%{
-    transform: translate(var(--dx), 100vh) rotate(calc(var(--rot) + 200deg));
+    transform: translate(var(--dx), 100vh) rotate(var(--rot));
   }
-}
+ }  
 *{
   margin:0;
   padding:0;
