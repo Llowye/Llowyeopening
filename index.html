@@ -36,7 +36,7 @@
    height:14px;
   opacity:1;
   will-change: transform;
-  animation: confettiBurst 1.6s ease-out forwards;
+  animation: confettiBurst 1.6s forwards;
 }
 
 .confetti-square{
@@ -69,11 +69,16 @@
 @keyframes confettiBurst{
   0%{
     transform: translate(0,0) rotate(0deg);
+    animation-timing-function: ease-out;
+  }
+  40%{
+    transform: translate(calc(var(--dx) * 0.6), var(--dy)) rotate(calc(var(--rot) * 0.5));
+    animation-timing-function: ease-in;
   }
   100%{
     transform: translate(var(--dx), 100vh) rotate(var(--rot));
   }
- }  
+}
 *{
   margin:0;
   padding:0;
@@ -382,7 +387,7 @@ function fireConfetti(){
 
     const distance = (10 + Math.random()*90) + "vw";
     const dx = fromLeft ? distance : "-" + distance;
-    const dy = (Math.random()*80 - 40) + "vh";
+    const dy = "-" + (20 + Math.random()*30) + "vh";
     piece.style.setProperty("--dx", dx);
     piece.style.setProperty("--dy", dy);
     piece.style.setProperty("--rot", (Math.random()*720 - 360) + "deg");
