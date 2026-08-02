@@ -423,7 +423,7 @@ setTimeout(()=>{
   const gain = ctx.createGain();
   osc.type = "square";
   osc.frequency.value = 800;
-  gain.gain.setValueAtTime(0.15, ctx.currentTime);
+  gain.gain.setValueAtTime(0.4, ctx.currentTime);
   gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
   osc.connect(gain);
   gain.connect(ctx.destination);
