@@ -36,7 +36,7 @@
    height:14px;
   opacity:1;
   will-change: transform;
-  animation: confettiBurst 1.6s forwards;
+  animation: confettiBurst forwards;
 }
 
 .confetti-square{
@@ -71,9 +71,18 @@
     transform: translate(0,0) rotate(0deg);
     animation-timing-function: ease-out;
   }
+  20%{
+    transform: translate(calc(var(--dx) * 0.3 + var(--wobble)), calc(var(--dy) * 0.7)) rotate(calc(var(--rot) * 0.15));
+  }
   40%{
-    transform: translate(calc(var(--dx) * 0.6), var(--dy)) rotate(calc(var(--rot) * 0.5));
+    transform: translate(calc(var(--dx) * 0.6 - var(--wobble)), var(--dy)) rotate(calc(var(--rot) * 0.45));
     animation-timing-function: ease-in;
+  }
+  60%{
+    transform: translate(calc(var(--dx) * 0.8 + var(--wobble) * 0.6), calc(var(--dy) * 0.2)) rotate(calc(var(--rot) * 0.7));
+  }
+  80%{
+    transform: translate(calc(var(--dx) * 0.92 - var(--wobble) * 0.4), 65vh) rotate(calc(var(--rot) * 0.88));
   }
   100%{
     transform: translate(var(--dx), 100vh) rotate(var(--rot));
@@ -388,10 +397,16 @@ function fireConfetti(){
     const distance = (10 + Math.random()*90) + "vw";
     const dx = fromLeft ? distance : "-" + distance;
     const dy = "-" + (20 + Math.random()*30) + "vh";
+    const wobble = (Math.random()*6 + 2) + "vw";
+
     piece.style.setProperty("--dx", dx);
     piece.style.setProperty("--dy", dy);
+    piece.style.setProperty("--wobble", wobble);
     piece.style.setProperty("--rot", (Math.random()*720 - 360) + "deg");
-    piece.style.animationDelay = (Math.random()*0.15) + "s";
+
+    piece.style.animationDuration = (1.3 + Math.random()*0.9) + "s";
+    piece.style.animationDelay = (Math.random()*0.2) + "s";
+
     piece.addEventListener("animationend", ()=> piece.remove());
     fragment.appendChild(piece);
   }
