@@ -127,7 +127,7 @@ MAIN CARD
 
 .bebek{
   width:130px;
-  margin-top:-50px;
+  margin-top:-20px;
   margin-bottom:-30px;
 }
 
@@ -174,13 +174,14 @@ MAIN CARD
 /* GIF KUCING TIDUR DI ATAS BOX */
 .catSleeping {
   position: absolute;
-  top: -38px;       /* Posisikan nangkring tepat di atas garis border box */
-  right: 15px;      /* Di pojok kanan atas */
-  width: 60px;      /* Ukuran kucing (bisa disesuaikan) */
+  top: -55px;       /* <--- Disesuaikan ke -55px agar badan kucing yang lebih besar tetap menempel pas di atas garis */
+  right: 10px;      /* <--- Geser sedikit posisi kanan kalau perlu */
+  width: 85px;      /* <--- Diperbesar dari 60px ke 85px */
   height: auto;
   pointer-events: none;
   z-index: 10;
 }
+  
   
 
 /* TOMBOL-TOMBOL */
@@ -359,17 +360,18 @@ h2{
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 8px;            /* Jarak antar GIF tunas */
-  margin-top: 15px;     /* Jarak dari kartu atas */
-  margin-bottom: 10px;  /* Jarak ke dasar layar */
+  gap: 10px;           /* Jarak antar daun sedikit diperlebar */
+  margin-top: 30px;    /* <--- Ditambah dari 15px ke 30px biar makin turun ke bawah */
+  margin-bottom: 5px;
   width: 100%;
 }
 
 .bottomPlants img {
-  width: 50px;         /* Ukuran masing-masing GIF (bisa diubah kalau mau lebih besar/kecil) */
+  width: 65px;         /* <--- Diperbesar dari 50px ke 65px */
   height: auto;
   display: block;
 }
+  
   
   
 @keyframes heartbeat{
