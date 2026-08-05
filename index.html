@@ -369,7 +369,7 @@ const leafKanan = document.getElementById("leafKanan");
 
 document.body.style.overflow = "hidden";
 
-function fireConfetti(){
+  function fireConfetti(){
   const container = document.getElementById("confettiContainer");
   const colors = ["#ff595e","#ffca3a","#8ac926","#1982c4","#6a4c93","#ff6fb5"];
   const shapes = ["confetti-square", "confetti-circle", "confetti-star"];
@@ -380,35 +380,35 @@ function fireConfetti(){
     const shape = shapes[Math.floor(Math.random() * shapes.length)];
     piece.className = "confetti-piece " + shape;
 
-    // Setengah ditembakkan dari kiri, setengah lagi dari kanan
     const fromLeft = i % 2 === 0;
     
-    // Titik awal ledakan di samping kiri / kanan layar
-    piece.style.left = fromLeft ? "-10px" : "auto";
-    piece.style.right = fromLeft ? "auto" : "-10px";
-    piece.style.top = (40 + Math.random() * 30) + "vh"; // Posisi ledakan di area tengah-samping
+    // Titik awal ledakan di pinggir kiri dan kanan
+    piece.style.left = fromLeft ? "0px" : "auto";
+    piece.style.right = fromLeft ? "auto" : "0px";
+    piece.style.top = (35 + Math.random() * 30) + "vh";
 
     // Warna
     piece.style.background = (shape === "confetti-star")
       ? "#FFD700"
       : colors[Math.floor(Math.random() * colors.length)];
 
-    // Terlempar menyilang ke tengah-seberang layar sambil meluncur jauh ke atas
-    const distanceX = (20 + Math.random() * 55) + "vw";
-    const dx = fromLeft ? distanceX : "-" + distanceX;
+    // AGAR MENYEBAR MERATA: 
+    // Jarak jangkauan horizontal diacak dari dekat (5vw) sampai seberang layar (95vw)
+    const targetX = (5 + Math.random() * 90) + "vw";
+    const dx = fromLeft ? targetX : "-" + targetX;
     
     // Melesat tinggi banget sampai keluar batas atas layar
     const dy = "-" + (100 + Math.random() * 30) + "vh"; 
     
-    // Efek goyangan acak saat jatuh
-    const wobble = (Math.random() * 16 - 8) + "vw";
+    // Goyangan acak kiri-kanan saat jatuh
+    const wobble = (Math.random() * 12 - 6) + "vw";
 
     piece.style.setProperty("--dx", dx);
     piece.style.setProperty("--dy", dy);
     piece.style.setProperty("--wobble", wobble);
     piece.style.setProperty("--rot", (Math.random() * 1080 - 540) + "deg");
 
-    // Durasi & Delay
+    // Durasi & Delay acak agar jatuhnya tidak berbarengan
     piece.style.animationDuration = (2.5 + Math.random() * 1.5) + "s";
     piece.style.animationDelay = (Math.random() * 0.15) + "s";
 
@@ -416,7 +416,8 @@ function fireConfetti(){
     fragment.appendChild(piece);
   }
   container.appendChild(fragment);
-}
+  }
+  
   
   
   
