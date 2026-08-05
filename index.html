@@ -71,18 +71,14 @@
   0%{
     transform: translate(0, 0) rotate(0deg);
   }
-  /* Melesat CEPAT ke atas dalam waktu 20% pertama */
-  20%{
-    transform: translate(calc(var(--dx) * 0.4), var(--dy)) rotate(calc(var(--rot) * 0.3));
-    animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
+  /* Melesat SANGAT CEPAT & TINGGI melewati batas atas layar */
+  25%{
+    transform: translate(var(--dx), var(--dy)) rotate(calc(var(--rot) * 0.4));
+    animation-timing-function: cubic-bezier(0.05, 0.9, 0.1, 1);
   }
-  /* Mengambang di atas sebentar lalu mulai jatuh */
-  40%{
-    transform: translate(calc(var(--dx) * 0.7 + var(--wobble)), calc(var(--dy) + 10vh)) rotate(calc(var(--rot) * 0.6));
-  }
-  /* Jatuh melayang turun ke bawah secara halus */
+  /* Jatuh melayang & menyebar dari posisi horizontal masing-masing */
   100%{
-    transform: translate(calc(var(--dx) + var(--wobble) * 2), 115vh) rotate(var(--rot));
+    transform: translate(calc(var(--dx) + var(--wobble)), 120vh) rotate(var(--rot));
     animation-timing-function: ease-in;
   }
   }
@@ -378,43 +374,41 @@ function fireConfetti(){
   const shapes = ["confetti-square", "confetti-circle", "confetti-star"];
   const fragment = document.createDocumentFragment();
 
-  for(let i=0; i<120; i++){
+  for(let i = 0; i < 140; i++){
     const piece = document.createElement("div");
-    const shape = shapes[Math.floor(Math.random()*shapes.length)];
+    const shape = shapes[Math.floor(Math.random() * shapes.length)];
     piece.className = "confetti-piece " + shape;
 
-    const fromLeft = i % 2 === 0;
-    
-    // Titik awal ledakan di posisi agak bawah layar (bisa dari kiri/kanan)
-    piece.style.left = fromLeft ? "10vw" : "auto";
-    piece.style.right = fromLeft ? "auto" : "10vw";
-    piece.style.top = "85vh";
+    // Sebar titik awal peluncuran merata dari 5% hingga 95% lebar layar
+    const startX = (5 + Math.random() * 90) + "vw";
+    piece.style.left = startX;
+    piece.style.top = "90vh";
 
     // Warna
     piece.style.background = (shape === "confetti-star")
       ? "#FFD700"
-      : colors[Math.floor(Math.random()*colors.length)];
+      : colors[Math.floor(Math.random() * colors.length)];
 
-    // Target melesat jauh ke atas banget (-80vh sampai -105vh)
-    const distance = (10 + Math.random() * 70) + "vw";
-    const dx = fromLeft ? distance : "-" + distance;
-    const dy = "-" + (80 + Math.random() * 25) + "vh"; // <--- Bikin melesat sampai puncak atas layar
-    const wobble = (Math.random() * 12 - 6) + "vw";
+    // Target Melesat: Ke atas luar layar (-120vh) & sedikit dorongan acak ke samping
+    const dx = (Math.random() * 30 - 15) + "vw"; 
+    const dy = "-" + (110 + Math.random() * 30) + "vh"; // <--- Meluncur jauh melewati batas atas
+    const wobble = (Math.random() * 20 - 10) + "vw";   // <--- Goyangan saat jatuh agar tetap menyebar
 
     piece.style.setProperty("--dx", dx);
     piece.style.setProperty("--dy", dy);
     piece.style.setProperty("--wobble", wobble);
     piece.style.setProperty("--rot", (Math.random() * 1080 - 540) + "deg");
 
-    // Durasi total gerakan (melesat cepat + melayang turun)
-    piece.style.animationDuration = (2.2 + Math.random() * 1.2) + "s";
-    piece.style.animationDelay = (Math.random() * 0.15) + "s";
+    // Durasi animasi & delay acak agar jatuhnya alami
+    piece.style.animationDuration = (2.5 + Math.random() * 1.5) + "s";
+    piece.style.animationDelay = (Math.random() * 0.2) + "s";
 
     piece.addEventListener("animationend", () => piece.remove());
     fragment.appendChild(piece);
   }
   container.appendChild(fragment);
 }
+  
   
 // Buka daun kiri & kanan
 setTimeout(()=>{
