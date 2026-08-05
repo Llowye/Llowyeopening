@@ -131,6 +131,7 @@ MAIN CARD
   margin-bottom:-30px;
 }
 
+
   /* OVERLAY BACKGROUND PEREDUP */
 .modalOverlay {
   position: fixed;
@@ -138,12 +139,12 @@ MAIN CARD
   background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Turun dari atas */
+  align-items: flex-start;
   z-index: 999999;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
-  padding-top: 10vh;
+  padding-top: 25vh; /* <--- Diubah dari 10vh ke 25vh agar posisi box muncul lebih ke bawah */
 }
 
 .modalOverlay.show {
@@ -153,6 +154,7 @@ MAIN CARD
 
 /* PAPAN PUTIH MODAL */
 .modalBox {
+  position: relative; /* <--- Wajib dipasang agar posisi kucing bisa menempel di atas box */
   background: #ffffff;
   border: 5px solid #C8F7F2;
   border-radius: 25px;
@@ -166,22 +168,20 @@ MAIN CARD
 }
 
 .modalOverlay.show .modalBox {
-  transform: translateY(0); /* Efek papan turun dari atas secara smooth */
+  transform: translateY(0);
 }
 
-.modalBox h3 {
-  font-family: 'Baloo', cursive, sans-serif;
-  color: #1a1a6e;
-  font-size: 18px;
-  margin-bottom: 10px;
+/* GIF KUCING TIDUR DI ATAS BOX */
+.catSleeping {
+  position: absolute;
+  top: -38px;       /* Posisikan nangkring tepat di atas garis border box */
+  right: 15px;      /* Di pojok kanan atas */
+  width: 60px;      /* Ukuran kucing (bisa disesuaikan) */
+  height: auto;
+  pointer-events: none;
+  z-index: 10;
 }
-
-.modalBox p {
-  font-size: 12px;
-  color: #555;
-  line-height: 1.5;
-  margin-bottom: 18px;
-}
+  
 
 /* TOMBOL-TOMBOL */
 .modalButtons {
@@ -459,15 +459,33 @@ LEAF LOADER
     <div class="topBar">
       <div class="love"><img src="love.gif" class="loveGif"></div>
       <a href="https://llowye.github.io/Llowyerecord/" target="_blank">
-  <img src="icons.png" class="iconsImg">
-</a>
+        <img src="icons.png" class="iconsImg">
+      </a>
     </div>
 
+    <!-- ISI KARTU UTAMA -->
     <div class="profileCard">
+      <h1>!! HOLA !!</h1>
+      <h2>WELCOME TO MY SHOP</h2>
 
-          </div> <!-- ini penutup .profileCard -->
+      <div class="divider"></div>
 
-    <!-- TAMBAHKAN KODE INI UNTUK 5 GIF TUNAS -->
+      <div class="idCard">
+        <a href="https://you-deserve-this-maker.vercel.app/?c=W1si8J%2BMmSIsIkxhdGUgTmlnaHQgQ3VkZGxlcyIsIkJlaW5nIGFuIGFkdWx0IGlzIGxvbmVseS4gU3VrdXJpbiBkZWggbG8uLi4iXSxbIvCfjLEiLCJIZXkgdSEgS2VlcCBzcGlyaXQuIiwiQ3V6IFdlIGh2IHRvbW9ycm93IDRyIGEgcmVhc29uIF5eIl0sWyLwn42cIiwiQXlhbSBNaWUiLCJEaWFtIGJ1a2FuIGJlcmFydGkgbGVtYWgsIHRhcGkgbGFwZXIuIl0sWyLwn6e4IiwiQmlnIGh1ZyIsIlBlb3BsZSBrYWRhbmcgY29tZSBhbmQgcHJldC4uLiJdLFsi8J%2BMvCIsIkJlZ2dlZCIsIkN1a3VwIGFudGFydGlrYSBhamEgeWcgamF1aCwgYW50YXJraXRhIGphbmdhbi4uLiJdXQ%3D%3D" target="_blank">
+          <img src="ktp.gif" alt="license card">
+        </a>
+      </div>
+
+      <div class="divider dividerBottom"></div>
+
+      <div class="arrowDown">
+        <img src="arrow.gif" alt="arrow">
+      </div>
+
+      <a href="https://pricelist.llowyeshop.my.id/" class="openBtn">OPEN</a>
+    </div> <!-- Penutup .profileCard yang benar -->
+
+    <!-- 5 GIF TUNAS DI BAWAH KARTU -->
     <div class="bottomPlants">
       <img src="tunas.gif" alt="tunas">
       <img src="tunas.gif" alt="tunas">
@@ -476,34 +494,10 @@ LEAF LOADER
       <img src="tunas.gif" alt="tunas">
     </div>
 
-  </div> <!-- penutup .cardWrapper -->
-  
-
-      <h1>!! HOLA !!</h1>
-      <h2>WELCOME TO MY SHOP</h2>
-
-      <div class="divider"></div>
-
-      <div class="idCard">
-  <a href="https://you-deserve-this-maker.vercel.app/?c=W1si8J%2BMmSIsIkxhdGUgTmlnaHQgQ3VkZGxlcyIsIkJlaW5nIGFuIGFkdWx0IGlzIGxvbmVseS4gU3VrdXJpbiBkZWggbG8uLi4iXSxbIvCfjLEiLCJIZXkgdSEgS2VlcCBzcGlyaXQuIiwiQ3V6IFdlIGh2IHRvbW9ycm93IDRyIGEgcmVhc29uIF5eIl0sWyLwn42cIiwiQXlhbSBNaWUiLCJEaWFtIGJ1a2FuIGJlcmFydGkgbGVtYWgsIHRhcGkgbGFwZXIuIl0sWyLwn6e4IiwiQmlnIGh1ZyIsIlBlb3BsZSBrYWRhbmcgY29tZSBhbmQgcHJldC4uLiJdLFsi8J%2BMvCIsIkJlZ2dlZCIsIkN1a3VwIGFudGFydGlrYSBhamEgeWcgamF1aCwgYW50YXJraXRhIGphbmdhbi4uLiJdXQ%3D%3D" target="_blank">
-    <img src="ktp.gif" alt="license card">
-  </a>
-      </div>
-
-      <div class="divider dividerBottom"></div>
-
-      <div class="arrowDown">
-  <img src="arrow.gif" alt="arrow">
-      </div>
-      
-
-      <a href="https://pricelist.llowyeshop.my.id/" class="openBtn">OPEN</a>
-
-    </div>
-
-  </div>
+  </div> <!-- Penutup .cardWrapper -->
 
 </div>
+  
 
 <script>
 const loader = document.getElementById("leafLoader");
@@ -576,6 +570,25 @@ function acceptSnk() {
   playClickSound(); // Membunyikan suara klip jika ada
 }
 
+  <!-- POPUP S&K -->
+<div id="snkModal" class="modalOverlay">
+  <div class="modalBox">
+    
+    <!-- GIF KUCING TIDUR -->
+    <img src="kucing.gif" alt="kucing" class="catSleeping">
+
+    <h3>⚠️ WARNING</h3>
+    <p>
+      Hai Kak! ✨ Demi kenyamanan transaksi bersama, harap baca S&K toko kami dulu yaa. 
+      Dengan menekan tombol <b>Setuju</b>, Kakak dianggap sudah menyetujui aturan di Llowye_Shop.
+    </p>
+    <div class="modalButtons">
+      <button class="btnCancel" onclick="closeSnk()">Enggak ah</button>
+      <button class="btnAccept" onclick="acceptSnk()">Setuju</button>
+    </div>
+  </div>
+</div>
+    
 // Buka Pop-up otomatis setelah confetti mulai meledak
 setTimeout(() => {
   showSnkModal();
@@ -631,20 +644,6 @@ if(closeBtn){
   });
 }
 </script>
-<!-- POPUP S&K -->
-<div id="snkModal" class="modalOverlay">
-  <div class="modalBox">
-    <h3>📌 Sebelum Lanjut, Cek Dulu Ya!</h3>
-    <p>
-      Hai Kak! ✨ Demi kenyamanan transaksi bersama, harap baca S&K toko kita dulu yaa. 
-      Dengan menekan tombol <b>Setuju</b>, Kakak dianggap sudah menyetujui aturan di Llowye_Shop.
-    </p>
-    <div class="modalButtons">
-      <button class="btnCancel" onclick="closeSnk()">Enggak</button>
-      <button class="btnAccept" onclick="acceptSnk()">Oke, Setuju!</button>
-    </div>
-  </div>
-</div>
   
 </body>
 </html>
