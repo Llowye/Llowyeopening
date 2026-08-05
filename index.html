@@ -133,21 +133,25 @@ MAIN CARD
 .netflixBox{
   background:#FCFBD2;
   border:6px solid #D4F6FC;
-  border-radius:35px; /* Radius disesuaikan agar bentuk kurvanya tetap manis */
-  padding:6px 12px;   /* Jarak dalam kotak dibuat tipis dan rapat */
+  border-radius:40px;
+  padding:0px 10px;
   margin:0 auto 14px;
-  width:fit-content;  /* Lebar kotak mengikuti ukuran logo secara pas */
+  width:fit-content;
+  height:70px; /* <--- KITA KUNCI TINGGI KOTAKNYA DI SINI */
   display:flex;
   justify-content:center;
   align-items:center;
+  overflow:hidden; /* <--- Sisa gambar transparan yang offside bakal dipotong */
 }
 
 .netflixTitle .logo{
-  height:90px;        /* Sesuaikan tinggi logo */
+  height:130px; /* <--- Gambar dibuat agak besar */
   width:auto;
-  margin:0;           /* Hapus semua margin negatif yang bikin renggang */
+  margin-top:-5px; /* <--- Tarik gambarnya biar pas di tengah */
+  margin-bottom:-5px;
   display:block;
 }
+  
   
 
 .topBar{
@@ -193,7 +197,7 @@ h1{
   color:#e0195a;
   font-size:20px;
   letter-spacing:1px;
-  margin:-8px 0 4px;
+  margin:-8px 0 0px;
 }
 
 h2{
