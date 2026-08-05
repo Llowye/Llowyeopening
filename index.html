@@ -133,17 +133,22 @@ MAIN CARD
 .netflixBox{
   background:#FCFBD2;
   border:6px solid #D4F6FC;
-  border-radius:70px;
-  padding:0px;
-  margin:-15px auto 14px;
-  width:65%;
+  border-radius:35px; /* Radius disesuaikan agar bentuk kurvanya tetap manis */
+  padding:6px 12px;   /* Jarak dalam kotak dibuat tipis dan rapat */
+  margin:0 auto 14px;
+  width:fit-content;  /* Lebar kotak mengikuti ukuran logo secara pas */
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 .netflixTitle .logo{
-  height:135px;
-  margin-top:-10px;
-   margin-bottom:-10px;
+  height:90px;        /* Sesuaikan tinggi logo */
+  width:auto;
+  margin:0;           /* Hapus semua margin negatif yang bikin renggang */
+  display:block;
 }
+  
 
 .topBar{
   display:flex;
@@ -227,7 +232,7 @@ h2{
 
 .arrowDown{
   margin-top: 5px;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
 }
 
 .arrowDown img{
