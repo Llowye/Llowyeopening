@@ -174,7 +174,7 @@ MAIN CARD
 /* GIF KUCING TIDUR DI ATAS GARIS */
 .catSleeping {
   position: absolute;
-  top: -30px;       /* Garis kucing pas di atas border */
+  top: -45px;       /* Garis kucing pas di atas border */
   right: 15px;      
   width: 85px;      
   height: auto;
@@ -196,11 +196,19 @@ MAIN CARD
   margin-bottom: 22px; /* Jarak ke tombol */
 }
 
-/* TOMBOL SETUJU HIJAU SOFT */
+/* Hapus .modalButtons yang lama, ganti pakai 2 baris CSS ini: */
+
 .modalButtons {
   display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 8px;
 }
+
+.leafIcon {
+  font-size: 18px;
+}
+  
 
 .btnAccept {
   font-family: 'Baloo', cursive, sans-serif;
@@ -519,8 +527,11 @@ LEAF LOADER
     </p>
 
     <div class="modalButtons">
-      <button class="btnAccept" onclick="acceptSnk()">Oke! nanti aku baca snk nya 🌱</button>
+  <!-- Tombol cuma berisi teks, emoji daun ditaruh di sebelahnya -->
+  <button class="btnAccept" onclick="acceptSnk()">Oke! nanti aku baca snk nya</button>
+  <span class="leafIcon">🌱</span>
     </div>
+    
 
   </div>
 </div>
