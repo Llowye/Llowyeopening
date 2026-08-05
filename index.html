@@ -498,79 +498,8 @@ LEAF LOADER
 
 </div>
   
-
 <script>
-const loader = document.getElementById("leafLoader");
-const main = document.getElementById("mainContent");
-const leafKiri = document.getElementById("leafKiri");
-const leafKanan = document.getElementById("leafKanan");
-
-document.body.style.overflow = "hidden";
-
-  function fireConfetti(){
-  const container = document.getElementById("confettiContainer");
-  const colors = ["#ff595e","#ffca3a","#8ac926","#1982c4","#6a4c93","#ff6fb5"];
-  const shapes = ["confetti-square", "confetti-circle", "confetti-star"];
-  const fragment = document.createDocumentFragment();
-
-  for(let i = 0; i < 140; i++){
-    const piece = document.createElement("div");
-    const shape = shapes[Math.floor(Math.random() * shapes.length)];
-    piece.className = "confetti-piece " + shape;
-
-    const fromLeft = i % 2 === 0;
-    
-    // Titik awal ledakan di pinggir kiri dan kanan
-    piece.style.left = fromLeft ? "0px" : "auto";
-    piece.style.right = fromLeft ? "auto" : "0px";
-    piece.style.top = (35 + Math.random() * 30) + "vh";
-
-    // Warna
-    piece.style.background = (shape === "confetti-star")
-      ? "#FFD700"
-      : colors[Math.floor(Math.random() * colors.length)];
-
-    // AGAR MENYEBAR MERATA: 
-    // Jarak jangkauan horizontal diacak dari dekat (5vw) sampai seberang layar (95vw)
-    const targetX = (5 + Math.random() * 90) + "vw";
-    const dx = fromLeft ? targetX : "-" + targetX;
-    
-    // Melesat tinggi banget sampai keluar batas atas layar
-    const dy = "-" + (100 + Math.random() * 30) + "vh"; 
-    
-    // Goyangan acak kiri-kanan saat jatuh
-    const wobble = (Math.random() * 12 - 6) + "vw";
-
-    piece.style.setProperty("--dx", dx);
-    piece.style.setProperty("--dy", dy);
-    piece.style.setProperty("--wobble", wobble);
-    piece.style.setProperty("--rot", (Math.random() * 1080 - 540) + "deg");
-
-    // Durasi & Delay acak agar jatuhnya tidak berbarengan
-    piece.style.animationDuration = (2.5 + Math.random() * 1.5) + "s";
-    piece.style.animationDelay = (Math.random() * 0.15) + "s";
-
-    piece.addEventListener("animationend", () => piece.remove());
-    fragment.appendChild(piece);
-  }
-  container.appendChild(fragment);
-  }
-  
-  // Tambahkan fungsi untuk buka & tutup Modal
-function showSnkModal() {
-  document.getElementById("snkModal").classList.add("show");
-}
-
-function closeSnk() {
-  document.getElementById("snkModal").classList.remove("show");
-}
-
-function acceptSnk() {
-  closeSnk();
-  playClickSound(); // Membunyikan suara klip jika ada
-}
-
-  <!-- POPUP S&K -->
+<!-- POPUP S&K (DITARUH DI LUAR / SEBELUM TAG SCRIPT) -->
 <div id="snkModal" class="modalOverlay">
   <div class="modalBox">
     
@@ -583,18 +512,78 @@ function acceptSnk() {
       Dengan menekan tombol <b>Setuju</b>, Kakak dianggap sudah menyetujui aturan di Llowye_Shop.
     </p>
     <div class="modalButtons">
-      <button class="btnCancel" onclick="closeSnk()">Enggak ah</button>
+      <button class="btnCancel" onclick="closeSnk()">Nanti baca</button>
       <button class="btnAccept" onclick="acceptSnk()">Setuju</button>
     </div>
   </div>
 </div>
+
+<script>
+const loader = document.getElementById("leafLoader");
+const main = document.getElementById("mainContent");
+const leafKiri = document.getElementById("leafKiri");
+const leafKanan = document.getElementById("leafKanan");
+
+document.body.style.overflow = "hidden";
+
+function fireConfetti(){
+  const container = document.getElementById("confettiContainer");
+  const colors = ["#ff595e","#ffca3a","#8ac926","#1982c4","#6a4c93","#ff6fb5"];
+  const shapes = ["confetti-square", "confetti-circle", "confetti-star"];
+  const fragment = document.createDocumentFragment();
+
+  for(let i = 0; i < 140; i++){
+    const piece = document.createElement("div");
+    const shape = shapes[Math.floor(Math.random() * shapes.length)];
+    piece.className = "confetti-piece " + shape;
+
+    const fromLeft = i % 2 === 0;
     
-// Buka Pop-up otomatis setelah confetti mulai meledak
+    piece.style.left = fromLeft ? "0px" : "auto";
+    piece.style.right = fromLeft ? "auto" : "0px";
+    piece.style.top = (35 + Math.random() * 30) + "vh";
+
+    piece.style.background = (shape === "confetti-star")
+      ? "#FFD700"
+      : colors[Math.floor(Math.random() * colors.length)];
+
+    const targetX = (5 + Math.random() * 90) + "vw";
+    const dx = fromLeft ? targetX : "-" + targetX;
+    const dy = "-" + (100 + Math.random() * 30) + "vh"; 
+    const wobble = (Math.random() * 12 - 6) + "vw";
+
+    piece.style.setProperty("--dx", dx);
+    piece.style.setProperty("--dy", dy);
+    piece.style.setProperty("--wobble", wobble);
+    piece.style.setProperty("--rot", (Math.random() * 1080 - 540) + "deg");
+
+    piece.style.animationDuration = (2.5 + Math.random() * 1.5) + "s";
+    piece.style.animationDelay = (Math.random() * 0.15) + "s";
+
+    piece.addEventListener("animationend", () => piece.remove());
+    fragment.appendChild(piece);
+  }
+  container.appendChild(fragment);
+}
+  
+// Fungsi untuk buka & tutup Modal
+function showSnkModal() {
+  document.getElementById("snkModal").classList.add("show");
+}
+
+function closeSnk() {
+  document.getElementById("snkModal").classList.remove("show");
+}
+
+function acceptSnk() {
+  closeSnk();
+  playClickSound();
+}
+
+// Buka Pop-up otomatis setelah 3 detik
 setTimeout(() => {
   showSnkModal();
-}, 3000); // Popup akan turun dari atas 3 detik setelah web dibuka
-  
-  
+}, 3000);
   
 // Buka daun kiri & kanan
 setTimeout(()=>{
@@ -616,7 +605,7 @@ setTimeout(()=>{
   }, 600);
 }, 5000);
 
-  function playClickSound(){
+function playClickSound(){
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
@@ -644,6 +633,6 @@ if(closeBtn){
   });
 }
 </script>
-  
+
 </body>
 </html>
