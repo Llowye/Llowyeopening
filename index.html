@@ -171,52 +171,56 @@ MAIN CARD
   transform: translateY(0);
 }
 
-/* GIF KUCING TIDUR DI ATAS BOX */
+/* GIF KUCING TIDUR DI ATAS GARIS */
 .catSleeping {
   position: absolute;
-  top: -55px;       /* <--- Disesuaikan ke -55px agar badan kucing yang lebih besar tetap menempel pas di atas garis */
-  right: 10px;      /* <--- Geser sedikit posisi kanan kalau perlu */
-  width: 85px;      /* <--- Diperbesar dari 60px ke 85px */
+  top: -30px;       /* Garis kucing pas di atas border */
+  right: 15px;      
+  width: 85px;      
   height: auto;
   pointer-events: none;
   z-index: 10;
 }
-  
-  
 
-/* TOMBOL-TOMBOL */
+.modalBox h3 {
+  font-family: 'Baloo', cursive, sans-serif;
+  color: #1a1a6e;
+  font-size: 18px;
+  margin-bottom: 14px; /* Jarak ke kalimat */
+}
+
+.modalBox p {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 22px; /* Jarak ke tombol */
+}
+
+/* TOMBOL SETUJU HIJAU SOFT */
 .modalButtons {
   display: flex;
   justify-content: center;
-  gap: 12px;
-}
-
-.btnCancel, .btnAccept {
-  font-family: 'Baloo', cursive, sans-serif;
-  border: none;
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.btnCancel {
-  background: #ffe3e3;
-  color: #d61f1f;
 }
 
 .btnAccept {
-  background: #A3EFFF;
-  color: #1a1a6e;
+  font-family: 'Baloo', cursive, sans-serif;
+  border: none;
+  padding: 10px 32px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  background: #bbf7d0; /* Hijau muda soft */
+  color: #166534;      /* Teks hijau tua */
   font-weight: bold;
-  box-shadow: 0 4px 0 #6bc4ea;
+  box-shadow: 0 4px 0 #86efac;
 }
 
 .btnAccept:active {
   transform: translateY(3px);
-  box-shadow: 0 1px 0 #6bc4ea;
+  box-shadow: 0 1px 0 #86efac;
 }
+  
   
 .netflixBox{
   background:#FCFBD2;
@@ -501,7 +505,7 @@ LEAF LOADER
 </div>
   
 
-<!-- POPUP S&K (DITARUH DI LUAR / SEBELUM TAG SCRIPT) -->
+<!-- POPUP S&K -->
 <div id="snkModal" class="modalOverlay">
   <div class="modalBox">
     
@@ -510,15 +514,17 @@ LEAF LOADER
 
     <h3>⚠️ WARNING</h3>
     <p>
-      Hai Kak! ✨ Demi kenyamanan transaksi bersama, harap baca S&K toko kami dulu yaa. 
-      Dengan menekan tombol <b>Setuju</b>, Kakak dianggap sudah menyetujui aturan di Llowye_Shop.
+      Hai Kak!✨ Demi kenyamanan transaksi bersama, harap baca S&K toko kami dulu yaa. 
+      Dengan terus melanjutkan, Kakak dianggap sudah menyetujui aturan di Llowye_Shop.
     </p>
+
     <div class="modalButtons">
-      <button class="btnCancel" onclick="closeSnk()">Nanti baca</button>
-      <button class="btnAccept" onclick="acceptSnk()">Setuju</button>
+      <button class="btnAccept" onclick="acceptSnk()">Oke! nanti aku baca snk nya 🌱</button>
     </div>
+
   </div>
 </div>
+  
 
 <script>
 const loader = document.getElementById("leafLoader");
