@@ -167,21 +167,21 @@ MAIN CARD
   transform: translateY(-50px);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
 .modalOverlay.show .modalBox {
   transform: translateY(0);
 }
 
-/* GIF KUCING TIDUR DI ATAS GARIS */
-.catSleeping {
-  position: absolute;
-  top: -85px;       /* Garis kucing pas di atas border */
-  right: 9px;      
-  width: 85px;      
-  height: auto;
-  pointer-events: none;
-  z-index: 10;
+/* EFEK DITARIK KE ATAS SAAT KLIK OKE */
+.modalOverlay.hideUp {
+  opacity: 0;
+  transition: opacity 0.5s ease 0.2s;
 }
+
+.modalOverlay.hideUp .modalBox {
+  transform: translateY(-120vh) !important;
+  transition: transform 0.6s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
 
 .modalBox h3 {
   font-family: 'Baloo', cursive, sans-serif;
@@ -189,7 +189,24 @@ MAIN CARD
   font-size: 18px;
   margin-bottom: 14px; /* Jarak ke kalimat */
 }
+/* TALI TAMBANG KIRI & KANAN */
+.ropeLeft, .ropeRight {
+  position: absolute;
+  top: -300px;
+  height: 310px;
+  width: 14px;
+  z-index: 1;
+  pointer-events: none;
+}
 
+.ropeLeft {
+  left: 25px;
+}
+
+.ropeRight {
+  right: 25px;
+}
+  
 .modalBox p {
   font-size: 12px;
   color: #555;
@@ -531,23 +548,27 @@ LEAF LOADER
 <div id="snkModal" class="modalOverlay">
   <div class="modalBox">
     
+    <!-- TALI TAMBANG KIRI DAN KANAN -->
+    <img src="tali.png" alt="tali" class="ropeLeft">
+    <img src="tali.png" alt="tali" class="ropeRight">
+
     <!-- GIF KUCING TIDUR -->
     <img src="kucing.gif" alt="kucing" class="catSleeping">
 
     <h3>⚠️ WARNING ⚠️</h3>
     <p>
-      Hai Kak!✨ Demi kenyamanan transaksi bersama, <b>harap baca S&K toko kami dulu yaa..</b>
+      Hai Kak! ✨ Demi kenyamanan transaksi bersama, 
+      <b>harap baca S&K toko kami dulu yaa..</b> 
       Dengan terus melanjutkan, Kakak dianggap sudah menyetujui aturan di Llowye_Shop.
     </p>
 
     <div class="modalButtons">
-  <!-- Tombol cuma berisi teks, emoji daun ditaruh di sebelahnya -->
-  <button class="btnAccept" onclick="acceptSnk()">Oke! nanti aku baca 🌱</button>
+      <button class="btnAccept" onclick="acceptSnk()">Oke! nanti aku baca 🌱</button>
     </div>
-    
 
   </div>
 </div>
+  
   
 
 <script>
