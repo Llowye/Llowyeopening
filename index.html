@@ -171,24 +171,6 @@ MAIN CARD
   transform: translateY(0);
 }
 
-/* EFEK DITARIK KE ATAS SAAT KLIK OKE */
-.modalOverlay.hideUp {
-  opacity: 0;
-  transition: opacity 0.5s ease 0.2s;
-}
-
-.modalOverlay.hideUp .modalBox {
-  transform: translateY(-120vh) !important;
-  transition: transform 0.6s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-}
-
-
-.modalBox h3 {
-  font-family: 'Baloo', cursive, sans-serif;
-  color: #800000;
-  font-size: 18px;
-  margin-bottom: 14px; /* Jarak ke kalimat */
-}
 /* TALI TAMBANG KIRI & KANAN */
 .ropeLeft, .ropeRight {
   position: absolute;
@@ -199,20 +181,40 @@ MAIN CARD
   pointer-events: none;
 }
 
-.ropeLeft {
-  left: 25px;
+.ropeLeft { left: 25px; }
+.ropeRight { right: 25px; }
+
+/* KUCING TIDUR (DITARUH DI ATAS TALI) */
+.catSleeping {
+  position: absolute;
+  top: -42px;
+  right: 5px;
+  width: 85px;
+  height: auto;
+  pointer-events: none;
+  z-index: 10;
 }
 
-.ropeRight {
-  right: 25px;
+/* EFEK DITARIK KE ATAS SAAT KLIK OKE */
+.modalOverlay.hideUp {
+  opacity: 0;
+  transition: opacity 0.5s ease 0.2s;
+}
+
+.modalOverlay.hideUp .modalBox {
+  transform: translateY(-120vh) !important;
+  transition: transform 0.6s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
   
-.modalBox p {
-  font-size: 12px;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 22px; /* Jarak ke tombol */
+
+
+.modalBox h3 {
+  font-family: 'Baloo', cursive, sans-serif;
+  color: #800000;
+  font-size: 18px;
+  margin-bottom: 14px; /* Jarak ke kalimat */
 }
+
 
 /* Hapus .modalButtons yang lama, ganti pakai 2 baris CSS ini: */
 
