@@ -269,6 +269,22 @@ h2{
   transform: translateY(6px) scale(0.96);
   box-shadow: 0 2px 0 #6bc4ea, 0 4px 8px rgba(0,0,0,.15);
 }
+  .bottomPlants {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 8px;            /* Jarak antar GIF tunas */
+  margin-top: 15px;     /* Jarak dari kartu atas */
+  margin-bottom: 10px;  /* Jarak ke dasar layar */
+  width: 100%;
+}
+
+.bottomPlants img {
+  width: 50px;         /* Ukuran masing-masing GIF (bisa diubah kalau mau lebih besar/kecil) */
+  height: auto;
+  display: block;
+}
+  
   
 @keyframes heartbeat{
   0%, 100%{ transform: scale(1); }
@@ -362,6 +378,20 @@ LEAF LOADER
     </div>
 
     <div class="profileCard">
+
+          </div> <!-- ini penutup .profileCard -->
+
+    <!-- TAMBAHKAN KODE INI UNTUK 5 GIF TUNAS -->
+    <div class="bottomPlants">
+      <img src="tunas.gif" alt="tunas">
+      <img src="tunas.gif" alt="tunas">
+      <img src="tunas.gif" alt="tunas">
+      <img src="tunas.gif" alt="tunas">
+      <img src="tunas.gif" alt="tunas">
+    </div>
+
+  </div> <!-- penutup .cardWrapper -->
+  
 
       <h1>!! HOLA !!</h1>
       <h2>WELCOME TO MY SHOP</h2>
