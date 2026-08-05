@@ -21,8 +21,9 @@
 <title>Llowye</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Baloo&display=swap" rel="stylesheet">
 
+  
 <style>
   #confettiContainer{
   position:fixed;
@@ -122,9 +123,9 @@ MAIN CARD
   
 
 .bebek{
-  width:180px;
-  margin-top:-70px;
-  margin-bottom:-40px;
+  width:130px;
+  margin-top:-50px;
+  margin-bottom:-30px;
 }
 
 .netflixBox{
@@ -181,7 +182,7 @@ MAIN CARD
 }
 
 h1{
-  font-family:'Baloo 2',sans-serif;
+  font-family:'Baloo',cursive,sans-serif; /* <--- Ganti 'Baloo 2' jadi 'Baloo' */
   color:#e0195a;
   font-size:26px;
   letter-spacing:1px;
@@ -189,12 +190,13 @@ h1{
 }
 
 h2{
-  font-family:'Baloo 2',sans-serif;
+  font-family:'Baloo',cursive,sans-serif; /* <--- Ganti 'Baloo 2' jadi 'Baloo' */
   color:#1a1a6e;
   font-size:20px;
   font-weight:700;
   margin:-5px 0 -2px;
 }
+  
 
 .divider{
   height:5px;
@@ -222,11 +224,17 @@ h2{
 }
 
 .arrowDown{
-  color:#ff3b3b;
-  font-size:30px;
-   margin-top:-10px;
-  margin-bottom:-10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
+
+.arrowDown img{
+  width: 50px; /* Sesuaikan ukuran lebar GIF di sini */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+  
   .openBtn{
   display:inline-block;
   background:#A3EFFF;
@@ -356,7 +364,10 @@ LEAF LOADER
 
       <div class="divider dividerBottom"></div>
 
-      <div class="arrowDown">﹀</div>
+      <div class="arrowDown">
+  <img src="arrow.gif" alt="arrow">
+      </div>
+      
 
       <a href="https://pricelist.llowyeshop.my.id/" class="openBtn">OPEN</a>
 
