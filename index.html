@@ -131,6 +131,92 @@ MAIN CARD
   margin-bottom:-30px;
 }
 
+  /* OVERLAY BACKGROUND PEREDUP */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Turun dari atas */
+  z-index: 999999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  padding-top: 10vh;
+}
+
+.modalOverlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* PAPAN PUTIH MODAL */
+.modalBox {
+  background: #ffffff;
+  border: 5px solid #C8F7F2;
+  border-radius: 25px;
+  padding: 20px;
+  width: 310px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transform: translateY(-50px);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modalOverlay.show .modalBox {
+  transform: translateY(0); /* Efek papan turun dari atas secara smooth */
+}
+
+.modalBox h3 {
+  font-family: 'Baloo', cursive, sans-serif;
+  color: #1a1a6e;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.modalBox p {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+/* TOMBOL-TOMBOL */
+.modalButtons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btnCancel, .btnAccept {
+  font-family: 'Baloo', cursive, sans-serif;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btnCancel {
+  background: #ffe3e3;
+  color: #d61f1f;
+}
+
+.btnAccept {
+  background: #A3EFFF;
+  color: #1a1a6e;
+  font-weight: bold;
+  box-shadow: 0 4px 0 #6bc4ea;
+}
+
+.btnAccept:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #6bc4ea;
+}
+  
 .netflixBox{
   background:#FCFBD2;
   border:6px solid #D4F6FC;
@@ -476,6 +562,24 @@ document.body.style.overflow = "hidden";
   container.appendChild(fragment);
   }
   
+  // Tambahkan fungsi untuk buka & tutup Modal
+function showSnkModal() {
+  document.getElementById("snkModal").classList.add("show");
+}
+
+function closeSnk() {
+  document.getElementById("snkModal").classList.remove("show");
+}
+
+function acceptSnk() {
+  closeSnk();
+  playClickSound(); // Membunyikan suara klip jika ada
+}
+
+// Buka Pop-up otomatis setelah confetti mulai meledak
+setTimeout(() => {
+  showSnkModal();
+}, 3000); // Popup akan turun dari atas 3 detik setelah web dibuka
   
   
   
@@ -527,6 +631,20 @@ if(closeBtn){
   });
 }
 </script>
-
+<!-- POPUP S&K -->
+<div id="snkModal" class="modalOverlay">
+  <div class="modalBox">
+    <h3>📌 Sebelum Lanjut, Cek Dulu Ya!</h3>
+    <p>
+      Hai Kak! ✨ Demi kenyamanan transaksi bersama, harap baca S&K toko kita dulu yaa. 
+      Dengan menekan tombol <b>Setuju</b>, Kakak dianggap sudah menyetujui aturan di Llowye_Shop.
+    </p>
+    <div class="modalButtons">
+      <button class="btnCancel" onclick="closeSnk()">Enggak</button>
+      <button class="btnAccept" onclick="acceptSnk()">Oke, Setuju!</button>
+    </div>
+  </div>
+</div>
+  
 </body>
 </html>
