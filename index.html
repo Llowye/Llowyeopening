@@ -443,7 +443,9 @@ h2{
   box-shadow: 0 2px 0 #6bc4ea, 0 4px 8px rgba(0,0,0,.15);
 }
 
+/* PARENT HARUS RELATIVE SEBAGAI PATOKAN */
 .bottomPlants {
+  position: relative; /* Penting biar kucing patokannya ke area rumput */
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -451,6 +453,30 @@ h2{
   margin-bottom: 5px;
   width: 100%;
 }
+
+/* KUCING JALAN DI ATAS RUMPUT */
+.catWalking {
+  position: absolute;
+  bottom: 12px;         /* <--- ATUR INI! Naik-turunin angka ini biar kakinya pas di daun tunas */
+  width: 50px;          /* Ukuran kucing (sesuaikan biar proporsional sama tunas) */
+  height: auto;
+  z-index: 5;           /* Di atas gambar tunas */
+  pointer-events: none;
+  
+  /* Animasi 12 detik, jalan mulus dari kiri ke kanan 1x */
+  animation: catWalkOnGrass 12s linear forwards;
+}
+
+/* ANIMASI JALAN DARI UJUNG KIRI KE KANAN LAYAR */
+@keyframes catWalkOnGrass {
+  0% {
+    left: -100px;       /* Mulai tersembunyi di balik pinggir layar kiri */
+  }
+  100% {
+    left: 100vw;        /* Jalan terus sampai habis melewati layar kanan */
+  }
+}
+  
 
 .bottomPlants img {
   width: 60px; /* Ukuran default semua tanaman biar gak hilang! */
@@ -461,7 +487,7 @@ h2{
 
 /* VARIASI UKURAN (BEDA-BEDA BERSELINGAN) */
 .bottomPlants img:nth-child(odd) { width: 99px; }  /* Tanaman ganjil (1,3,5,7, dst) */
-.bottomPlants img:nth-child(even) { width: 175px; } /* Tanaman genap (2,4,6,8, dst) */
+.bottomPlants img:nth-child(even) { width: 68px; } /* Tanaman genap (2,4,6,8, dst) */
 .bottomPlants img:nth-child(3n) { width: 65px; }   /* Tiap kelipatan 3 */
 
 .bottomPlants img:last-child {
@@ -598,7 +624,7 @@ LEAF LOADER
       <a href="https://pricelist.llowyeshop.my.id/" class="openBtn">OPEN</a>
     </div> <!-- Penutup .profileCard yang benar -->
 
-    <!-- 5 GIF TUNAS DI BAWAH KARTU -->
+        <!-- 10 GIF TUNAS DI BAWAH KARTU -->
     <div class="bottomPlants">
       <img src="tunas.gif" alt="tunas">
       <img src="tunas.gif" alt="tunas">
@@ -610,7 +636,11 @@ LEAF LOADER
       <img src="tunas.gif" alt="tunas">
       <img src="tunas.gif" alt="tunas">
       <img src="tunas.gif" alt="tunas">
+
+      <!-- TARUH KUCING DI SINI -->
+      <img src="cat.gif" alt="kucing jalan" class="catWalking">
     </div>
+    
 
   </div> <!-- Penutup .cardWrapper -->
 
