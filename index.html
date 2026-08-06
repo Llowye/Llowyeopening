@@ -112,20 +112,16 @@ MAIN CARD
   opacity:1;
   transform:scale(1);
   background:#fff;
-  overflow:hidden;
-  padding:10px 0 0px;
+  overflow-y:auto;       /* Pake auto biar kalo di HP layar pendek tetep aman */
+  padding:10px 0 30px;   /* Kasih napas 30px bawah biar rumput ga kepotong navigation bar HP */
 }
+  
   
 .cardWrapper{
   width:280px; 
   max-width:85%;
   text-align:center;
   transform: scale(0.9);
-  height: 100vh;        /* <--- Tambahkan ini biar mepet dari atas sampai bawah layar */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* <--- Bikin tanaman otomatis didorong ke paling dasar */
-}
 
 .bebek{
   width:130px;
@@ -444,14 +440,13 @@ h2{
   box-shadow: 0 2px 0 #6bc4ea, 0 4px 8px rgba(0,0,0,.15);
 }
 
-/* PARENT HARUS RELATIVE SEBAGAI PATOKAN */
 .bottomPlants {
-  position: relative; /* Penting biar kucing patokannya ke area rumput */
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-top: auto;    
-  margin-bottom: 0px;
+  margin-top: 15px;      /* Jarak dari tombol open ke rumput */
+  margin-bottom: 0px; 
   width: 100%;
 }
 
