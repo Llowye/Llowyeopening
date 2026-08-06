@@ -108,7 +108,7 @@
 MAIN CARD
 =======================*/
 
-#mainContent{
+ #mainContent{
   position:fixed;
   inset:0;
   display:flex;
@@ -117,17 +117,20 @@ MAIN CARD
   opacity:1;
   transform:scale(1);
   background:#fff;
-  overflow-y:auto;       /* Pake auto biar kalo di HP layar pendek tetep aman */
-  padding:10px 0 10px;   /* Kasih napas 30px bawah biar rumput ga kepotong navigation bar HP */
+  overflow-y:auto;
+  overflow-x:hidden !important; /* <--- KUNCI OVERFLOW HORIZONTAL DI SINI */
+  padding:10px 0 10px;
+  width: 100vw;                 /* <--- KUNCI LEBAR SE-LAYAR HP */
 }
-  
-  
+
 .cardWrapper{
   width:280px; 
   max-width:85%;
   text-align:center;
   transform: scale(0.9);
+  transform-origin: top center; /* <--- BIAR SKALA DARI TENGAH, GAK BIKIN LEBAR BAYANGAN DI KANAN */
 }
+  
 
 .bebek{
   width:130px;
