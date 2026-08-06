@@ -142,13 +142,16 @@ MAIN CARD
   align-items: flex-start;
   z-index: 999999;
   padding-top: 25vh;
-  /* Dibuat hilang dulu tanpa animasi fade */
-  display: none; 
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  overflow: hidden; /* Biar ga muncul scrollbar pas box meluncur dari kanan */
 }
 
 /* Saat aktif/muncul */
 .modalOverlay.show {
-  display: flex;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* PAPAN PUTIH MODAL */
@@ -163,7 +166,7 @@ MAIN CARD
   text-align: center;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   
-  /* POSISI AWAL: Sembunyi di luar layar kanan */
+  /* POSISI AWAL: Sembunyi jauh di luar kanan layar */
   transform: translateX(100vw);
   transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -173,10 +176,10 @@ MAIN CARD
   transform: translateX(0);
 }
 
-/* KETIKA KLIK OKE: Ditarik meluncur ke atas */
-.modalOverlay.hideUp .modalBox {
-  transform: translateY(-120vh) !important;
-  transition: transform 0.6s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+/* KETIKA KLIK OKE (HILANG): Meluncur balik ke kanan luar layar */
+.modalOverlay.hideRight .modalBox {
+  transform: translateX(100vw) !important;
+  transition: transform 0.5s ease-in;
 }
   
 
@@ -430,7 +433,7 @@ h2{
   box-shadow: 0 2px 0 #6bc4ea, 0 4px 8px rgba(0,0,0,.15);
 }
 
-  .bottomPlants {
+.bottomPlants {
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -440,21 +443,21 @@ h2{
 }
 
 .bottomPlants img {
+  width: 60px; /* Ukuran default semua tanaman biar gak hilang! */
   height: auto;
   display: block;
-  margin-right: -25px; /* Jarak rapat antar tanaman */
+  margin-right: -25px; /* Jarak tumpuk antar tanaman */
 }
 
-/* ATUR UKURAN MASING-MASING TANAMAN (BEDA-BEDA) */
-.bottomPlants img:nth-child(1) { width: 55px; } /* Tanaman 1 (Kecil) */
-.bottomPlants img:nth-child(2) { width: 70px; } /* Tanaman 2 (Besar) */
-.bottomPlants img:nth-child(3) { width: 80px; } /* Tanaman 3 (Sedang) */
-.bottomPlants img:nth-child(4) { width: 75px; } /* Tanaman 4 (Paling Besar) */
-.bottomPlants img:nth-child(5) { width: 50px; } /* Tanaman 5 (Kecil) */
+/* VARIASI UKURAN (BEDA-BEDA BERSELINGAN) */
+.bottomPlants img:nth-child(odd) { width: 55px; }  /* Tanaman ganjil (1,3,5,7, dst) */
+.bottomPlants img:nth-child(even) { width: 75px; } /* Tanaman genap (2,4,6,8, dst) */
+.bottomPlants img:nth-child(3n) { width: 65px; }   /* Tiap kelipatan 3 */
 
 .bottomPlants img:last-child {
   margin-right: 0;
 }
+  
   
   .btnAccept {
   font-family: 'Baloo', cursive, sans-serif;
@@ -688,8 +691,15 @@ function showSnkModal() {
 }
 
 function closeSnk() {
-  document.getElementById("snkModal").classList.remove("show");
+  const modal = document.getElementById("snkModal");
+  modal.classList.add("hideRight"); // Tambah class buat meluncur balik ke kanan
+  
+  setTimeout(() => {
+    modal.classList.remove("show");
+    modal.classList.remove("hideRight");
+  }, 500); // Waktu 500ms pas dengan durasi animasi CSS
 }
+  
 
 function acceptSnk() {
   closeSnk();
