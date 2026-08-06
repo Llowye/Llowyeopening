@@ -316,8 +316,8 @@ MAIN CARD
   /* AWAN 5: Di Bawah Awan 4 */
 .bgAwan5 {
   position: fixed;
-  top: 110px;         /* <--- Turun lebih bawah lagi */
-  right: 3px;
+  top: 70px;         /* <--- Turun lebih bawah lagi */
+  right: 1px;
   width: 155px;
   height: auto;
   z-index: 0;
@@ -452,6 +452,15 @@ h2{
   width: 100%;
 }
 
+  .bottomPlants img {
+  width: 60px; /* Ukuran default semua tanaman biar gak hilang! */
+  height: auto;
+  display: block;
+  margin-right: -25px; /* Jarak tumpuk antar tanaman */
+  position: relative; /* Penting! Harus ada position relative biar z-index jalan */
+  z-index: 10;
+  }
+
 /* KUCING JALAN DI ATAS RUMPUT */
 .catWalking {
   position: absolute;
@@ -473,16 +482,6 @@ h2{
   100% {
     left: 100vw;        /* Jalan terus sampai habis melewati layar kanan */
   }
-}
-  
-
-.bottomPlants img {
-  width: 60px; /* Ukuran default semua tanaman biar gak hilang! */
-  height: auto;
-  display: block;
-  margin-right: -25px; /* Jarak tumpuk antar tanaman */
-  position: relative; /* Penting! Harus ada position relative biar z-index jalan */
-  z-index: 10;
 }
 
 /* VARIASI UKURAN (BEDA-BEDA BERSELINGAN) */
