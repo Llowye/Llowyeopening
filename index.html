@@ -132,8 +132,7 @@ MAIN CARD
   margin-bottom:-47px;
 }
 
-
-  /* OVERLAY BACKGROUND PEREDUP */
+/* OVERLAY BACKGROUND PEREDUP */
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -142,34 +141,44 @@ MAIN CARD
   justify-content: center;
   align-items: flex-start;
   z-index: 999999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-  padding-top: 25vh; /* <--- Diubah dari 10vh ke 25vh agar posisi box muncul lebih ke bawah */
+  padding-top: 25vh;
+  /* Dibuat hilang dulu tanpa animasi fade */
+  display: none; 
 }
 
+/* Saat aktif/muncul */
 .modalOverlay.show {
-  opacity: 1;
-  pointer-events: auto;
+  display: flex;
 }
 
 /* PAPAN PUTIH MODAL */
 .modalBox {
-  position: relative; /* <--- Wajib dipasang agar posisi kucing bisa menempel di atas box */
+  position: relative;
   background: #ffffff;
   border: 5px solid #C8F7F2;
-  border-radius: 25px 0 25px 25px;
+  border-radius: 25px 0px 25px 25px; /* Kanan atas lancip */
   padding: 20px;
   width: 310px;
   max-width: 90%;
   text-align: center;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  transform: translateY(-50px);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* POSISI AWAL: Sembunyi di luar layar kanan */
+  transform: translateX(100vw);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+/* KETIKA MUNCUL: Meluncur dari kanan ke tengah */
 .modalOverlay.show .modalBox {
-  transform: translateY(0);
+  transform: translateX(0);
 }
+
+/* KETIKA KLIK OKE: Ditarik meluncur ke atas */
+.modalOverlay.hideUp .modalBox {
+  transform: translateY(-120vh) !important;
+  transition: transform 0.6s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+  
 
 /* KUCING TIDUR (DITARUH DI ATAS TALI) */
 .catSleeping {
@@ -180,17 +189,6 @@ MAIN CARD
   height: auto;
   pointer-events: none;
   z-index: 10;
-}
-
-/* EFEK DITARIK KE ATAS SAAT KLIK OKE */
-.modalOverlay.hideUp {
-  opacity: 0;
-  transition: opacity 0.5s ease 0.2s;
-}
-
-.modalOverlay.hideUp .modalBox {
-  transform: translateY(-120vh) !important;
-  transition: transform 0.6s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
   
 
@@ -274,9 +272,9 @@ MAIN CARD
 /* AWAN 1: Samping Matahari (Di kanan, kelihatan setengah) */
 .bgAwan1 {
   position: fixed;
-  top: -35px;
-  right: 80px;        /* <--- Ganti left jadi right biar nempel ke area matahari */
-  width: 100px;       /* <--- Dikecilkan dari 200px biar gak nutupin Netflix */
+  top: -55px;
+  right: 20px;        /* <--- Ganti left jadi right biar nempel ke area matahari */
+  width: 150px;       /* <--- Dikecilkan dari 200px biar gak nutupin Netflix */
   height: auto;
   z-index: 0;
   pointer-events: none;
@@ -285,9 +283,9 @@ MAIN CARD
 /* AWAN 2: Pojok Kiri Atas */
 .bgAwan2 {
   position: fixed;
-  top: 10px;
+  top: 3px;
   left: -10px;        /* Mepet pinggir kiri */
-  width: 90px;
+  width: 94px;
   height: auto;
   z-index: 0;
   pointer-events: none;
@@ -431,24 +429,29 @@ h2{
   transform: translateY(6px) scale(0.96);
   box-shadow: 0 2px 0 #6bc4ea, 0 4px 8px rgba(0,0,0,.15);
 }
+
   .bottomPlants {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  /* Hapus properti gap di sini, biarin aja */
   margin-top: 30px;    
   margin-bottom: 5px;
   width: 100%;
 }
 
 .bottomPlants img {
-  width: 65px;         
   height: auto;
   display: block;
-  margin-right: -25px; /* <--- MAININ DI SINI! Ubah dari -10px, -20px, atau -30px biar makin mepet */
+  margin-right: -25px; /* Jarak rapat antar tanaman */
 }
 
-/* Hilangkan margin minus untuk tanaman paling terakhir biar posisinya tetap di tengah */
+/* ATUR UKURAN MASING-MASING TANAMAN (BEDA-BEDA) */
+.bottomPlants img:nth-child(1) { width: 55px; } /* Tanaman 1 (Kecil) */
+.bottomPlants img:nth-child(2) { width: 70px; } /* Tanaman 2 (Besar) */
+.bottomPlants img:nth-child(3) { width: 80px; } /* Tanaman 3 (Sedang) */
+.bottomPlants img:nth-child(4) { width: 75px; } /* Tanaman 4 (Paling Besar) */
+.bottomPlants img:nth-child(5) { width: 50px; } /* Tanaman 5 (Kecil) */
+
 .bottomPlants img:last-child {
   margin-right: 0;
 }
