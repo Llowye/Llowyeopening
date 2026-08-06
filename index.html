@@ -14,8 +14,6 @@
   ==================================================================================================================================
 -->
 
-
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -95,10 +93,13 @@
   font-family:'Poppins',sans-serif;
 }
 
-body{
-  background:#fff;
-  overflow:hidden;
-}
+  body {
+  background: #fff;
+  overflow-x: hidden; /* <--- TAMBAHKAN INI! Kunci layar biar gak bisa digeser ke kanan */
+  overflow-y: auto;
+  width: 100%;
+  }
+  
 
 /*======================
 MAIN CARD
@@ -465,8 +466,8 @@ h2{
   
 .catWalking {
   position: fixed;
-  bottom: 17px;           /* <--- Pas di dasar layar HP */
-  width: 200px;          /* <--- Ukuran kucing gede yang lu mau */
+  bottom: 60px;           /* <--- Pas di dasar layar HP */
+  width: 270px;          /* <--- Ukuran kucing gede yang lu mau */
   height: auto;
   z-index: 5;            /* <--- Tetap di belakang rumput */
   pointer-events: none;
