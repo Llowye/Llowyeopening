@@ -112,17 +112,20 @@ MAIN CARD
   opacity:1;
   transform:scale(1);
   background:#fff;
-  overflow-y:auto;
-  padding:0px 0 60px;
-}
-
-.cardWrapper{
-  width:280px; /* <--- Ubah dari 360px jadi 280px (atau 300px kalau mau agak sedang) */
-  max-width:85%;
-  text-align:center;
-  transform: scale(0.9); /* <--- Skala opsional jika ingin lebih proporsional */
+  overflow:hidden;
+  padding:10px 0 0px;
 }
   
+.cardWrapper{
+  width:280px; 
+  max-width:85%;
+  text-align:center;
+  transform: scale(0.9);
+  height: 100vh;        /* <--- Tambahkan ini biar mepet dari atas sampai bawah layar */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* <--- Bikin tanaman otomatis didorong ke paling dasar */
+}
 
 .bebek{
   width:130px;
@@ -447,8 +450,8 @@ h2{
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-top: 30px;    
-  margin-bottom: 5px;
+  margin-top: auto;    
+  margin-bottom: 0px;
   width: 100%;
 }
 
@@ -473,7 +476,7 @@ h2{
 .catWalking {
   position: fixed;       /* Bebas jalan se-layar HP */
   bottom: -7px;           /* Posisinya di paling bawah layar */
-  width: 250px;           /* Ukuran kucing */
+  width: 350px;           /* Ukuran kucing */
   height: auto;
   z-index: 999;          /* Di atas elemen latar */
   pointer-events: none;
