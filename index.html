@@ -380,16 +380,22 @@ h2{
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: -1000px;           /* Jarak antar daun sedikit diperlebar */
-  margin-top: 30px;    /* <--- Ditambah dari 15px ke 30px biar makin turun ke bawah */
+  /* Hapus properti gap di sini, biarin aja */
+  margin-top: 30px;    
   margin-bottom: 5px;
   width: 100%;
 }
 
 .bottomPlants img {
-  width: 90px;         /* <--- Diperbesar dari 50px ke 65px */
+  width: 65px;         
   height: auto;
   display: block;
+  margin-right: -25px; /* <--- MAININ DI SINI! Ubah dari -10px, -20px, atau -30px biar makin mepet */
+}
+
+/* Hilangkan margin minus untuk tanaman paling terakhir biar posisinya tetap di tengah */
+.bottomPlants img:last-child {
+  margin-right: 0;
 }
   
   .btnAccept {
