@@ -318,7 +318,7 @@ MAIN CARD
   position: fixed;
   top: 110px;         /* <--- Turun lebih bawah lagi */
   right: 3px;
-  width: 95px;
+  width: 155px;
   height: auto;
   z-index: 0;
   pointer-events: none;
@@ -456,7 +456,7 @@ h2{
 .catWalking {
   position: absolute;
   bottom: 12px;         /* <--- ATUR INI! Naik-turunin angka ini biar kakinya pas di daun tunas */
-  width: 86px;          /* Ukuran kucing (sesuaikan biar proporsional sama tunas) */
+  width: 120px;          /* Ukuran kucing (sesuaikan biar proporsional sama tunas) */
   height: auto;
   z-index: 5;           /* Di atas gambar tunas */
   pointer-events: none;
@@ -481,6 +481,8 @@ h2{
   height: auto;
   display: block;
   margin-right: -25px; /* Jarak tumpuk antar tanaman */
+  position: relative; /* Penting! Harus ada position relative biar z-index jalan */
+  z-index: 10;
 }
 
 /* VARIASI UKURAN (BEDA-BEDA BERSELINGAN) */
