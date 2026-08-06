@@ -93,12 +93,15 @@
   font-family:'Poppins',sans-serif;
 }
 
-  body {
-  background: #fff;
-  overflow-x: hidden; /* <--- TAMBAHKAN INI! Kunci layar biar gak bisa digeser ke kanan */
-  overflow-y: auto;
+ html, body {
   width: 100%;
-  }
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
   
 
 /*======================
@@ -476,10 +479,10 @@ h2{
 
 @keyframes catWalkOnGrass {
   0% {
-    left: -120px;        /* Sembunyi penuh di luar kiri layar */
+    left: -210px; /* Bikin minus agak gedean dikit dari ukuran kucing 200px */
   }
   100% {
-    left: 100vw;         /* Jalan meluncur ke luar kanan layar */
+    left: 100%;   /* Pake 100% biar gak nembus bikin space di kanan */
   }
 }
   
