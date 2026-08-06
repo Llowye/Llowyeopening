@@ -1,4 +1,3 @@
-
 <!--
   ==================================================================================================================================
   Llowye_Shop Landing Page Template
@@ -18,13 +17,12 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Llowye</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Baloo&display=swap" rel="stylesheet">
 
-  
 <style>
   #confettiContainer{
   position:fixed;
@@ -74,12 +72,10 @@
   0%{
     transform: translate(0, 0) rotate(0deg);
   }
-  /* Melesat CEPAT & TINGGI melewati layar atas */
   25%{
     transform: translate(var(--dx), var(--dy)) rotate(calc(var(--rot) * 0.4));
     animation-timing-function: cubic-bezier(0.05, 0.9, 0.1, 1);
   }
-  /* Melayang turun & menyebar dari posisi puncak */
   100%{
     transform: translate(calc(var(--dx) + var(--wobble)), 120vh) rotate(var(--rot));
     animation-timing-function: ease-in;
@@ -93,16 +89,15 @@
   font-family:'Poppins',sans-serif;
 }
 
- html, body {
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden !important;
+html, body {
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden !important; /* MATIKAN SCROLL KANAN */
+  position: relative;
   margin: 0;
   padding: 0;
   background: #fff;
 }
-
-  
 
 /*======================
 MAIN CARD
@@ -118,9 +113,9 @@ MAIN CARD
   transform:scale(1);
   background:#fff;
   overflow-y:auto;
-  overflow-x:hidden !important; /* <--- KUNCI OVERFLOW HORIZONTAL DI SINI */
+  overflow-x:hidden !important;
   padding:10px 0 10px;
-  width: 100vw;                 /* <--- KUNCI LEBAR SE-LAYAR HP */
+  width: 100%;
 }
 
 .cardWrapper{
@@ -128,9 +123,8 @@ MAIN CARD
   max-width:85%;
   text-align:center;
   transform: scale(0.9);
-  transform-origin: top center; /* <--- BIAR SKALA DARI TENGAH, GAK BIKIN LEBAR BAYANGAN DI KANAN */
+  transform-origin: top center;
 }
-  
 
 .bebek{
   width:130px;
@@ -151,45 +145,37 @@ MAIN CARD
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease;
-  overflow: hidden; /* Biar ga muncul scrollbar pas box meluncur dari kanan */
+  overflow: hidden !important;
 }
 
-/* Saat aktif/muncul */
 .modalOverlay.show {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* PAPAN PUTIH MODAL */
 .modalBox {
   position: relative;
   background: #ffffff;
   border: 5px solid #C8F7F2;
-  border-radius: 25px 0px 25px 25px; /* Kanan atas lancip */
+  border-radius: 25px 0px 25px 25px;
   padding: 20px;
   width: 310px;
   max-width: 90%;
   text-align: center;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  
-  /* POSISI AWAL: Sembunyi jauh di luar kanan layar */
   transform: translateX(100vw);
   transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* KETIKA MUNCUL: Meluncur dari kanan ke tengah */
 .modalOverlay.show .modalBox {
   transform: translateX(0);
 }
 
-/* KETIKA KLIK OKE (HILANG): Meluncur balik ke kanan luar layar */
 .modalOverlay.hideRight .modalBox {
   transform: translateX(100vw) !important;
   transition: transform 0.5s ease-in;
 }
-  
 
-/* KUCING TIDUR (DITARUH DI ATAS TALI) */
 .catSleeping {
   position: absolute;
   top: -97px;
@@ -199,18 +185,13 @@ MAIN CARD
   pointer-events: none;
   z-index: 10;
 }
-  
-
 
 .modalBox h3 {
   font-family: 'Baloo', cursive, sans-serif;
   color: #ff0000;
   font-size: 18px;
-  margin-bottom: 15px; /* Jarak ke kalimat */
+  margin-bottom: 15px;
 }
-
-
-/* Hapus .modalButtons yang lama, ganti pakai 2 baris CSS ini: */
 
 .modalButtons {
   display: flex;
@@ -222,7 +203,6 @@ MAIN CARD
 .leafIcon {
   font-size: 18px;
 }
-  
 
 .btnAccept {
   font-family: 'Baloo', cursive, sans-serif;
@@ -232,8 +212,8 @@ MAIN CARD
   font-size: 14px;
   cursor: pointer;
   transition: 0.2s;
-  background: #bbf7d0; /* Hijau muda soft */
-  color: #166534;      /* Teks hijau tua */
+  background: #bbf7d0;
+  color: #166534;
   font-weight: bold;
   margin-top: -30px;
   box-shadow: 0 4px 0 #86efac;
@@ -243,8 +223,7 @@ MAIN CARD
   transform: translateY(3px);
   box-shadow: 0 1px 0 #86efac;
 }
-  
-  
+
 .netflixBox{
   background:#FCFBD2;
   border:6px solid #D4F6FC;
@@ -252,87 +231,80 @@ MAIN CARD
   padding:0px 10px;
   margin:0 auto 14px;
   width:fit-content;
-  height:95px; /* <--- KITA KUNCI TINGGI KOTAKNYA DI SINI */
+  height:95px;
   display:flex;
   justify-content:center;
   align-items:center;
-  overflow:hidden; /* <--- Sisa gambar transparan yang offside bakal dipotong */
+  overflow:hidden;
 }
 
 .netflixTitle .logo{
-  height:130px; /* <--- Gambar dibuat agak besar */
+  height:130px;
   width:auto;
-  margin-top:-5px; /* <--- Tarik gambarnya biar pas di tengah */
+  margin-top:-5px;
   margin-bottom:-5px;
   display:block;
 }
-  
-  /* MATAHARI BACKGROUND (Di Atas Kanan - Kelihatan Setengah) */
+
 .bgMatahari {
   position: fixed;
-  top: -30px;         /* Makin minus, makin tersembunyi ke atas */
-  right: -30px;       /* Makin minus, makin tersembunyi ke kanan */
-  width: 110px;       /* Ukuran matahari */
-  height: auto;
-  z-index: 0;         /* 0 artinya MURNI DI LATAR BELAKANG (di bawah kartu) */
-  pointer-events: none;
-}
-
-/* AWAN 1: Samping Matahari (Di kanan, kelihatan setengah) */
-.bgAwan1 {
-  position: fixed;
-  top: -95px;
-  right: 60px;        /* <--- Ganti left jadi right biar nempel ke area matahari */
-  width: 170px;       /* <--- Dikecilkan dari 200px biar gak nutupin Netflix */
+  top: -30px;
+  right: -30px;
+  width: 110px;
   height: auto;
   z-index: 0;
   pointer-events: none;
 }
 
-/* AWAN 2: Pojok Kiri Atas */
+.bgAwan1 {
+  position: fixed;
+  top: -95px;
+  right: 60px;
+  width: 170px;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .bgAwan2 {
   position: fixed;
   top: -10px;
-  left: -10px;        /* Mepet pinggir kiri */
+  left: -10px;
   width: 100px;
   height: auto;
   z-index: 0;
   pointer-events: none;
 }
 
-/* AWAN 3: Di Bawah Awan 2 */
 .bgAwan3 {
   position: fixed;
-  top: 97px;          /* <--- Diperlebar jarak turunnya */
+  top: 97px;
   left: 15px;
-  width: 33px;        /* Paling kecil */
+  width: 33px;
   height: auto;
   z-index: 0;
   pointer-events: none;
 }
 
-/* AWAN 4: Di Bawah Awan 3 */
 .bgAwan4 {
   position: fixed;
-  top: 150px;         /* <--- Turun lebih bawah lagi */
+  top: 150px;
   left: 5px;
   width: 80px;
   height: auto;
   z-index: 0;
   pointer-events: none;
 }
-  /* AWAN 5: Di Bawah Awan 4 */
+
 .bgAwan5 {
   position: fixed;
-  top: 70px;         /* <--- Turun lebih bawah lagi */
+  top: 70px;
   right: -1px;
   width: 155px;
   height: auto;
   z-index: 0;
   pointer-events: none;
 }
-  
-  
 
 .topBar{
   display:flex;
@@ -349,8 +321,8 @@ MAIN CARD
 
 .loveGif{
   height:90px;
-   margin-top:-10px;
-   margin-bottom:-20px;
+  margin-top:-10px;
+  margin-bottom:-20px;
 }
 .iconsImg{
   height:18px;
@@ -373,7 +345,7 @@ MAIN CARD
 }
 
 h1{
-  font-family:'Baloo',cursive,sans-serif; /* <--- Ganti 'Baloo 2' jadi 'Baloo' */
+  font-family:'Baloo',cursive,sans-serif;
   color:#e0195a;
   font-size:20px;
   letter-spacing:1px;
@@ -381,13 +353,12 @@ h1{
 }
 
 h2{
-  font-family:'Baloo',cursive,sans-serif; /* <--- Ganti 'Baloo 2' jadi 'Baloo' */
+  font-family:'Baloo',cursive,sans-serif;
   color:#1a1a6e;
   font-size:18px;
   font-weight:500;
   margin:0px 0 -2px;
 }
-  
 
 .divider{
   height:5px;
@@ -420,13 +391,13 @@ h2{
 }
 
 .arrowDown img{
-  width: 25px; /* Sesuaikan ukuran lebar GIF di sini */
+  width: 25px;
   height: auto;
   display: block;
   margin: 0 auto;
 }
-  
-  .openBtn{
+
+.openBtn{
   display:inline-block;
   background:#A3EFFF;
   color:#1a1a6e;
@@ -436,7 +407,6 @@ h2{
   border-radius:40px;
   border:6px solid #fff;
   box-shadow:0 8px 0 #6bc4ea, 0 10px 15px rgba(0,0,0,.2);
-  /* Ubah transition agar ada efek kenyal (cubic-bezier) dan lebih mulus */
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
   margin-top:-10px;
   margin-bottom:20px;
@@ -444,7 +414,6 @@ h2{
 }
 
 .openBtn:active{
-  /* Turun lebih halus dan agak membal/memngecil sedikit saat ditekan */
   transform: translateY(6px) scale(0.96);
   box-shadow: 0 2px 0 #6bc4ea, 0 4px 8px rgba(0,0,0,.15);
 }
@@ -455,42 +424,41 @@ h2{
   justify-content: center;
   align-items: flex-end;
   margin-top: 10px;
-  margin-bottom: -5px;    /* <--- Set ke 0px */
-  width: 80%;
-  margin-left: 0px;
+  margin-bottom: -5px;
+  width: 100%;
 }
 
-  .bottomPlants img {
+.bottomPlants img {
   width: 60px;
   height: auto;
   display: block;
   margin-right: -32px;
   position: relative;
-  z-index: 10;           /* <--- RUMPUT DIPASANG DI LAYER 10 */
-  }
-  
-  
+  z-index: 10;
+}
+
+/* KUCING RAKSASA DI-SETING PRESISI */
 .catWalking {
   position: fixed;
-  bottom: 60px;           /* <--- Pas di dasar layar HP */
-  width: 270px;          /* <--- Ukuran kucing gede yang lu mau */
+  bottom: 0px;             /* Pas di dasar layar HP */
+  width: 270px;            /* Ukuran kucing raksasa kamu */
   height: auto;
-  z-index: 5;            /* <--- Tetap di belakang rumput */
+  z-index: 5;              /* Di belakang rumput */
   pointer-events: none;
   animation: catWalkOnGrass 12s linear forwards;
 }
 
+/* ANIMASI DIPERBAIKI BIAR LAYAR KANAN GAK BISA DIGESER */
 @keyframes catWalkOnGrass {
   0% {
-    left: -210px; /* Bikin minus agak gedean dikit dari ukuran kucing 200px */
+    left: -280px;          /* Sembunyi utuh di kiri */
   }
   100% {
-    left: 100%;   /* Pake 100% biar gak nembus bikin space di kanan */
+    left: calc(100vw + 10px); /* Keluar penuh ke kanan tanpa merusak layout */
   }
 }
-  
-  
-  .btnAccept {
+
+.btnAccept {
   font-family: 'Baloo', cursive, sans-serif;
   border: none;
   padding: 10px 32px;
@@ -501,11 +469,10 @@ h2{
   background: #bbf7d0;
   color: #166534;
   margin-top: 20px;
-  font-weight: normal; /* <--- Ganti dari bold jadi normal biar ga tebal! */
+  font-weight: normal;
   box-shadow: 0 4px 0 #86efac;
-  }
-  
-  
+}
+
 @keyframes heartbeat{
   0%, 100%{ transform: scale(1); }
   15%{ transform: scale(1.08); }
@@ -513,9 +480,6 @@ h2{
   45%{ transform: scale(1.08); }
   60%{ transform: scale(1); }
 }
-/*======================
-LEAF LOADER
-=======================*/
 
 #leafLoader{
   position:fixed;
@@ -541,12 +505,9 @@ LEAF LOADER
   box-shadow: inset -20px 0 40px rgba(0,0,0,.5), inset 20px 0 40px rgba(0,0,0,.3);
   filter: blur(0.3px);
 }
-#leafKiri{
-  left:0;
-}
-#leafKanan{
-  right:0;
-}
+#leafKiri{ left:0; }
+#leafKanan{ right:0; }
+
 #leafKiri.open{
   animation: curtainLeft 2.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
@@ -575,7 +536,7 @@ LEAF LOADER
   <div id="leafKanan"></div>
 </div>
 
-  <div id="confettiContainer"></div>
+<div id="confettiContainer"></div>
 
 <!-- MAIN -->
 <div id="mainContent">
@@ -617,9 +578,9 @@ LEAF LOADER
       </div>
 
       <a href="https://pricelist.llowyeshop.my.id/" class="openBtn">OPEN</a>
-    </div> <!-- Penutup .profileCard yang benar -->
+    </div>
 
-        <!-- 15 GIF TUNAS DI BAWAH KARTU -->
+    <!-- 10 GIF TUNAS DI BAWAH KARTU -->
     <div class="bottomPlants">
       <img src="tunas.gif" alt="tunas">
       <img src="tunas.gif" alt="tunas">
@@ -631,27 +592,27 @@ LEAF LOADER
       <img src="tunas.gif" alt="tunas">
       <img src="tunas.gif" alt="tunas">
       <img src="tunas.gif" alt="tunas">
+    </div>
+
   </div> <!-- Penutup .cardWrapper -->
 
 </div>
-  <!-- AWAN & MATAHARI BACKGROUND -->
+
+<!-- AWAN & MATAHARI BACKGROUND -->
 <img src="matahari.gif" alt="matahari" class="bgMatahari">
 <img src="awan.gif" alt="awan" class="bgAwan1">
 <img src="awan.gif" alt="awan" class="bgAwan2">
 <img src="awan.gif" alt="awan" class="bgAwan3">
 <img src="awan.gif" alt="awan" class="bgAwan4">
 <img src="awan.gif" alt="awan" class="bgAwan5">
-  
-<!-- BENAR: -->
+
 <!-- KUCING JALAN -->
 <img src="cat.gif" alt="kucing jalan" class="catWalking">
-  
 
 <!-- POPUP S&K -->
 <div id="snkModal" class="modalOverlay">
   <div class="modalBox">
     
-    <!-- GIF KUCING TIDUR -->
     <img src="kucing.gif" alt="kucing" class="catSleeping">
 
     <h3>⚠️  WARNING  ⚠️</h3>
@@ -667,8 +628,6 @@ LEAF LOADER
 
   </div>
 </div>
-  
-  
 
 <script>
 const loader = document.getElementById("leafLoader");
@@ -717,34 +676,30 @@ function fireConfetti(){
   }
   container.appendChild(fragment);
 }
-  
-// Fungsi untuk buka & tutup Modal
+
 function showSnkModal() {
   document.getElementById("snkModal").classList.add("show");
 }
 
 function closeSnk() {
   const modal = document.getElementById("snkModal");
-  modal.classList.add("hideRight"); // Tambah class buat meluncur balik ke kanan
+  modal.classList.add("hideRight");
   
   setTimeout(() => {
     modal.classList.remove("show");
     modal.classList.remove("hideRight");
-  }, 500); // Waktu 500ms pas dengan durasi animasi CSS
+  }, 500);
 }
-  
 
 function acceptSnk() {
   closeSnk();
   playClickSound();
 }
 
-// Buka Pop-up otomatis setelah 3 detik
 setTimeout(() => {
   showSnkModal();
 }, 3000);
-  
-// Buka daun kiri & kanan
+
 setTimeout(()=>{
   leafKiri.classList.add("open");
   leafKanan.classList.add("open");
@@ -754,7 +709,6 @@ setTimeout(()=>{
   fireConfetti();
 }, 1800);
 
-// Hapus loader
 setTimeout(()=>{
   loader.style.opacity = "0";
   loader.style.transition = "0.6s ease";
