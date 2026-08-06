@@ -441,42 +441,35 @@ h2{
   box-shadow: 0 2px 0 #6bc4ea, 0 4px 8px rgba(0,0,0,.15);
 }
 
-/* 1. RUMPUT DIBIKIN FIXED JUGA KELUAR KARTU & Z-INDEX TINGGI */
 .bottomPlants {
-  position: fixed;       /* Bikin rumput nempel di dasar layar utama */
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%); /* Biar tetep presisi di tengah */
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  margin-top: 10px;      /* Jarak dari tombol OPEN */
+  margin-bottom: -15px;  /* Biar nempel pas di garis bawah kartu */
   width: 100%;
-  max-width: 320px;
-  z-index: 1000;  /* <--- RUMPUT DI ANGKA 1000 (MENANG DIBANDING KUCING) */
-  margin-bottom: 50px;
-  pointer-events: none;
 }
 
-.bottomPlants img {
-  width: 120px;
+  .bottomPlants img {
+  width: 60px;
   height: auto;
   display: block;
   margin-right: -25px;
   position: relative;
-}
-
-.catWalking {
+  z-index: 10;           /* <--- RUMPUT DIPASANG DI LAYER 10 */
+  }
+  
+  .catWalking {
   position: fixed;
-  bottom: -20px;         /* <--- DIBIKIN MINUS! Biar kakinya tenggelam di balik rumput, tapi badannya tetep kelihatan di atas rumput */
-  width: 160px;          /* <--- UKURAN KUCING DIGEDEIN (Sesuaikan kalau mau lebih gede/kecil: 140px - 180px) */
+  bottom: 0px;           /* Pas di dasar layar/garis rumput */
+  width: 130px;          /* Ukuran kucing gedenya pas & mantap */
   height: auto;
-  z-index: 5;            /* <--- Tetap di bawah rumput */
+  z-index: 5;            /* <--- KUCING DIPASANG DI LAYER 5 (DI BELAKANG RUMPUT) */
   pointer-events: none;
   animation: catWalkOnGrass 12s linear forwards;
 }
-  
-  
-  
+
 
 @keyframes catWalkOnGrass {
   0% {
