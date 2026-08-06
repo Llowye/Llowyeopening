@@ -113,7 +113,7 @@ MAIN CARD
   transform:scale(1);
   background:#fff;
   overflow-y:auto;       /* Pake auto biar kalo di HP layar pendek tetep aman */
-  padding:10px 0 30px;   /* Kasih napas 30px bawah biar rumput ga kepotong navigation bar HP */
+  padding:10px 0 10px;   /* Kasih napas 30px bawah biar rumput ga kepotong navigation bar HP */
 }
   
   
@@ -446,8 +446,8 @@ h2{
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-top: 10px;      /* Jarak dari tombol OPEN */
-  margin-bottom: -15px;  /* Biar nempel pas di garis bawah kartu */
+  margin-top: 10px;
+  margin-bottom: 0px;    /* <--- Set ke 0px */
   width: 100%;
 }
 
@@ -460,16 +460,16 @@ h2{
   z-index: 10;           /* <--- RUMPUT DIPASANG DI LAYER 10 */
   }
   
-  .catWalking {
+  
+.catWalking {
   position: fixed;
-  bottom: 0px;           /* Pas di dasar layar/garis rumput */
-  width: 130px;          /* Ukuran kucing gedenya pas & mantap */
+  bottom: 0px;           /* <--- Pas di dasar layar HP */
+  width: 140px;          /* <--- Ukuran kucing gede yang lu mau */
   height: auto;
-  z-index: 5;            /* <--- KUCING DIPASANG DI LAYER 5 (DI BELAKANG RUMPUT) */
+  z-index: 5;            /* <--- Tetap di belakang rumput */
   pointer-events: none;
   animation: catWalkOnGrass 12s linear forwards;
 }
-
 
 @keyframes catWalkOnGrass {
   0% {
