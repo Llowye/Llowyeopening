@@ -465,16 +465,16 @@ h2{
   position: relative;
 }
 
-/* 2. KUCING Z-INDEX DI BAWAH RUMPUT */
 .catWalking {
   position: fixed;
-  bottom: 160px;          /* Tingginya pas di balik batang rumput */
-  width: 200px;
+  bottom: -20px;         /* <--- DIBIKIN MINUS! Biar kakinya tenggelam di balik rumput, tapi badannya tetep kelihatan di atas rumput */
+  width: 160px;          /* <--- UKURAN KUCING DIGEDEIN (Sesuaikan kalau mau lebih gede/kecil: 140px - 180px) */
   height: auto;
-  z-index: 998;          /* <--- KUCING DI ANGKA 998 (DI BELAKANG RUMPUT) */
+  z-index: 5;            /* <--- Tetap di bawah rumput */
   pointer-events: none;
   animation: catWalkOnGrass 12s linear forwards;
 }
+  
   
   
 
