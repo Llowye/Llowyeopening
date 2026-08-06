@@ -271,49 +271,50 @@ MAIN CARD
   pointer-events: none;
 }
 
-/* AWAN GIF (Di Atas Kiri) */
+/* AWAN 1: Samping Matahari (Di kanan, kelihatan setengah) */
 .bgAwan1 {
   position: fixed;
-  top: -35px;          /* Jarak dari atas layar */
-  left: 50px;         /* Jarak dari kiri layar */
-  width: 200px;
+  top: -35px;
+  right: 80px;        /* <--- Ganti left jadi right biar nempel ke area matahari */
+  width: 100px;       /* <--- Dikecilkan dari 200px biar gak nutupin Netflix */
   height: auto;
   z-index: 0;
   pointer-events: none;
 }
 
-/* AWAN GIF (Tengah Kiri) */
+/* AWAN 2: Pojok Kiri Atas */
 .bgAwan2 {
   position: fixed;
-  top: 28px;         /* Jarak dari atas layar (lebih turun) */
-  left: 15px;         /* Jarak dari kiri layar */
-  width: 75px;
-  height: auto;
-  z-index: 0;
-  pointer-events: none;
-}
-  
-  /* AWAN GIF (Tengah Kiri) */
-.bgAwan3 {
-  position: fixed;
-  top: 55px;         /* Jarak dari atas layar (lebih turun) */
-  left: 15px;         /* Jarak dari kiri layar */
-  width: 50px;
-  height: auto;
-  z-index: 0;
-  pointer-events: none;
-}
-
-  /* AWAN GIF (Tengah Kiri) */
-.bgAwan4 {
-  position: fixed;
-  top: 100px;         /* Jarak dari atas layar (lebih turun) */
-  left: 15px;         /* Jarak dari kiri layar */
+  top: 10px;
+  left: -10px;        /* Mepet pinggir kiri */
   width: 90px;
   height: auto;
   z-index: 0;
   pointer-events: none;
 }
+
+/* AWAN 3: Di Bawah Awan 2 */
+.bgAwan3 {
+  position: fixed;
+  top: 85px;          /* <--- Diperlebar jarak turunnya */
+  left: 15px;
+  width: 50px;        /* Paling kecil */
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* AWAN 4: Di Bawah Awan 3 */
+.bgAwan4 {
+  position: fixed;
+  top: 150px;         /* <--- Turun lebih bawah lagi */
+  left: 5px;
+  width: 80px;
+  height: auto;
+  z-index: 0;
+  pointer-events: none;
+}
+  
   
 
 .topBar{
