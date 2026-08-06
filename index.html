@@ -470,26 +470,22 @@ h2{
   margin-right: 0;
 }
   
-  /* KUCING JALAN MENYEBERANG SELURUH LAYAR */
 .catWalking {
-  position: fixed;       /* Bebas dari batas kartu/div */
-  bottom: 0px;           /* Pas di paling bawah layar/rumput */
-  width: 90px;           /* Ukuran kucing (sesuaikan) */
+  position: fixed;       /* Bebas jalan se-layar HP */
+  bottom: 0px;           /* Posisinya di paling bawah layar */
+  width: 90px;           /* Ukuran kucing */
   height: auto;
-  z-index: 999;          /* Muncul jelas di layar */
+  z-index: 999;          /* Di atas elemen latar */
   pointer-events: none;
-  
-  /* Jalan 12 detik, dari luar kiri ke luar kanan */
   animation: catWalkOnGrass 12s linear forwards;
 }
 
-/* ANIMASI JALAN DARI UJUNG KIRI SAKPOK KANAN */
 @keyframes catWalkOnGrass {
   0% {
-    left: -120px;        /* Mulai tersembunyi total di balik layar kiri */
+    left: -120px;        /* Sembunyi penuh di luar kiri layar */
   }
   100% {
-    left: 100vw;         /* Jalan meluncur sampai habis di balik layar kanan */
+    left: 100vw;         /* Jalan meluncur ke luar kanan layar */
   }
 }
   
@@ -648,9 +644,9 @@ LEAF LOADER
 <img src="awan.gif" alt="awan" class="bgAwan4">
 <img src="awan.gif" alt="awan" class="bgAwan5">
   
-<!-- TARUH KUCING DI SINI -->
-      <img src="cat.gif" alt="kucing jalan" class="catWalking">
-</div>
+<!-- BENAR: -->
+<!-- KUCING JALAN -->
+<img src="cat.gif" alt="kucing jalan" class="catWalking">
   
 
 <!-- POPUP S&K -->
