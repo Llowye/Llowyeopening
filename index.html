@@ -350,45 +350,58 @@ MAIN CARD
   position: relative;
 }
   
-/* PEMUTAR MUSIK BULAT CUTE NGINTIP DI SAMPING */
+
+  /* PEMUTAR MUSIK KOTAK TUMPUL NGINTIP DI SAMPING */
 .audioPlayerPeek {
   position: absolute;
-  bottom: 35px;         /* Naik lebih tinggi sesuai request kamu */
-  right: -28px;         /* Bikin lingkaran ngintip setengah di kanan */
-  z-index: -1;          /* Nempel di belakang box kuning */
+  bottom: 45px;         /* Posisi tinggi tombolnya */
+  right: -42px;         /* <--- GESER LEBIH KE KANAN BIAR NONGOL LEBIH BANYAK */
+  z-index: -1;          /* Di belakang box kuning */
 }
 
 .musicBtnPeek {
   font-family: 'Baloo', cursive, sans-serif;
-  background: #FCFBD2;  /* Kuning pastel */
-  border: 4px solid #C8F7F2; /* Border biru pastel soft */
+  background: #FCFBD2;  /* Warna kuning pastel */
+  border: 4px solid #C8F7F2; /* Border biru pastel */
   color: #1a1a6e;
-  width: 62px;          /* Bikin ukuran lingkaran pas */
-  height: 62px;
-  border-radius: 50%;   /* <--- BIKIN BENTUK BULAT PERFECT! */
+  width: 65px;          
+  height: 60px;
+  border-radius: 18px;  /* <--- BIKIN BENTUK PERSEGI DENGAN SUDUT TUMPUL (ROUNDED SQUARE) */
   font-size: 10px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 2px 4px 10px rgba(0,0,0,0.12);
+  box-shadow: 3px 4px 10px rgba(0,0,0,0.12);
   transition: all 0.2s ease;
   display: flex;
-  flex-direction: column; /* Bikin ikon musik & teks tumpuk atas-bawah */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   line-height: 1.1;
   padding: 0;
 }
 
+/* EMOT MUSIK BERGERAK KAYAK DERING TELEPON */
 .musicBtnPeek span {
-  font-size: 16px;      /* Ukuran ikon not musik */
+  font-size: 18px;
   margin-bottom: 2px;
+  display: inline-block;
+  animation: ringIcon 1.2s ease-in-out infinite; /* <--- ANIMASI DERING TELEPON */
+}
+
+/* Keyframes Animasi Dering / Shake */
+@keyframes ringIcon {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(15deg); }
+  20% { transform: rotate(-15deg); }
+  30% { transform: rotate(15deg); }
+  40% { transform: rotate(-15deg); }
+  50% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
 }
 
 .musicBtnPeek:active {
   transform: scale(0.92);
 }
-  
-  
 
   
 h1{
