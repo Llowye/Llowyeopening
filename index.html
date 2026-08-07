@@ -1,5 +1,3 @@
-
-
 <!--
   ==================================================================================================================================
   Llowye_Shop Landing Page Template
@@ -15,8 +13,6 @@
   ==================================================================================================================================
 -->
 
-
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -28,7 +24,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Baloo&display=swap" rel="stylesheet">
 
 <style>
-  
   #confettiContainer{
   position:fixed;
   inset:0;
@@ -97,7 +92,7 @@
 html, body {
   width: 100vw;
   max-width: 100%;
-  overflow-x: hidden !important; /* MATIKAN SCROLL KANAN */
+  overflow-x: hidden !important;
   position: relative;
   margin: 0;
   padding: 0;
@@ -130,6 +125,7 @@ MAIN CARD
   transform: scale(0.9);
   transform-origin: top center;
   margin-top: 30px;
+  position: relative;
 }
 
 .bebek{
@@ -138,7 +134,6 @@ MAIN CARD
   margin-bottom:-47px;
 }
 
-/* OVERLAY BACKGROUND PEREDUP */
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -351,23 +346,22 @@ MAIN CARD
   position: relative;
 }
   
-
-  /* PEMUTAR MUSIK KOTAK TUMPUL NGINTIP DI SAMPING */
+/* PEMUTAR MUSIK KOTAK TUMPUL NGINTIP DI SAMPING */
 .audioPlayerPeek {
   position: absolute;
-  bottom: 45px;         /* Posisi tinggi tombolnya */
-  right: -42px;         /* <--- GESER LEBIH KE KANAN BIAR NONGOL LEBIH BANYAK */
-  z-index: -1;          /* Di belakang box kuning */
+  bottom: 45px;
+  right: -42px;
+  z-index: -1;
 }
 
 .musicBtnPeek {
   font-family: 'Baloo', cursive, sans-serif;
-  background: #FCFBD2;  /* Warna kuning pastel */
-  border: 4px solid #C8F7F2; /* Border biru pastel */
+  background: #FCFBD2;
+  border: 4px solid #C8F7F2;
   color: #ff0000;
   width: 65px;          
   height: 60px;
-  border-radius: 18px;  /* <--- BIKIN BENTUK PERSEGI DENGAN SUDUT TUMPUL (ROUNDED SQUARE) */
+  border-radius: 18px;
   font-size: 10px;
   font-weight: normal;
   cursor: pointer;
@@ -383,16 +377,13 @@ MAIN CARD
   letter-spacing: 1.5px;
 }
 
-/* EMOT MUSIK BERGERAK KAYAK DERING TELEPON */
 .musicBtnPeek span {
   font-size: 18px;
-  margin-bottom: 2px;
   display: inline-block;
-  animation: ringIcon 1.2s ease-in-out infinite; /* <--- ANIMASI DERING TELEPON */
+  animation: ringIcon 1.2s ease-in-out infinite;
   margin-bottom: 6px;
 }
 
-/* Keyframes Animasi Dering / Shake */
 @keyframes ringIcon {
   0% { transform: rotate(0deg); }
   10% { transform: rotate(15deg); }
@@ -407,7 +398,6 @@ MAIN CARD
   transform: scale(0.92);
 }
 
-  
 h1{
   font-family:'Baloo',cursive,sans-serif;
   color:#e0195a;
@@ -491,6 +481,7 @@ h2{
   margin-bottom: -15px;
   margin-left: 10px;
   width: 100%;
+  z-index: 30; /* Tunas rumput di depan */
 }
 
 .bottomPlants img {
@@ -499,27 +490,24 @@ h2{
   display: block;
   margin-right: -17px;
   position: relative;
-  z-index: 30;
 }
 
-/* KUCING RAKSASA DI-SETING PRESISI */
 .catWalking {
   position: fixed;
-  bottom: -12px;             /* Pas di dasar layar HP */
-  width: 270px;            /* Ukuran kucing raksasa kamu */
+  bottom: -12px;
+  width: 270px;
   height: auto;
-  z-index: 10;              /* Di belakang rumput */
+  z-index: 10; /* Kucing di belakang tunas */
   pointer-events: none;
   animation: catWalkOnGrass 12s linear forwards;
 }
 
-/* ANIMASI DIPERBAIKI BIAR LAYAR KANAN GAK BISA DIGESER */
 @keyframes catWalkOnGrass {
   0% {
-    left: -280px;          /* Sembunyi utuh di kiri */
+    left: -280px;
   }
   100% {
-    left: calc(90vw + 10px); /* Keluar penuh ke kanan tanpa merusak layout */
+    left: calc(90vw + 10px);
   }
 }
 
@@ -643,24 +631,16 @@ h2{
       </div>
 
       <a href="https://pricelist.llowyeshop.my.id/" class="openBtn">OPEN</a>
-    </div>
-    
-     <!-- PEMUTAR MUSIK NGINTIP DI BELAKANG -->
-<div class="audioPlayerPeek">
-  <!-- PAKAI NAMA FILE ASLI (DENGAN ENCODING AMAN): -->
-  <audio id="mySong" src="NewJeans%20(%EB%8B%B4%EC%A7%84%EC%8A%A4)%20'Cookie'%20Official%20MV_1784978220370.mp3" loop></audio>
 
-  <button class="musicBtnPeek" onclick="toggleMusic()">
-    <span id="musicIcon">🎵</span> Play
-  </button>
-</div>
-    
+      <!-- PEMUTAR MUSIK RAPI DI DALAM PROFILECARD -->
+      <div class="audioPlayerPeek">
+        <audio id="mySong" src="NewJeans%20(%EB%89%B4%EC%A7%84%EC%8A%A4)%20'Cookie'%20Official%20MV_1784978220370.mp3" loop></audio>
+        <button class="musicBtnPeek" onclick="toggleMusic()">
+          <span id="musicIcon">🎵</span> Play
+        </button>
+      </div>
 
-  <button class="musicBtnPeek" onclick="toggleMusic()">
-    <span id="musicIcon">🎵</span> Play
-  </button>
-</div>
-    
+    </div> <!-- Penutup .profileCard PAS -->
 
     <!-- 10 GIF TUNAS DI BAWAH KARTU -->
     <div class="bottomPlants">
@@ -828,7 +808,7 @@ if(closeBtn){
   });
 }
 
-  /* FUNGSI UTAMA PEMUTAR MUSIK */
+/* FUNGSI UTAMA PEMUTAR MUSIK AKHIRNYA DIPASANG DENGAN BENAR */
 function toggleMusic() {
   const mySong = document.getElementById("mySong");
   const musicIcon = document.getElementById("musicIcon");
@@ -844,7 +824,7 @@ function toggleMusic() {
     musicIcon.innerText = "🎵";
   }
 }
-  
+
 </script>
 
 </body>
