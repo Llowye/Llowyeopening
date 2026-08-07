@@ -348,12 +348,11 @@ MAIN CARD
   position: relative;
 }
   
-/* PEMUTAR MUSIK NGINTIP DI SAMPING BAWAH */
 .audioPlayerPeek {
   position: absolute;
-  bottom: 15px;         /* Posisi tingginya di area bawah kartu */
-  right: -35px;         /* <--- Bikin dia NONGOL/NGINTIP KE SAMPING KANAN */
-  z-index: -1;          /* Naro tombol DI BELAKANG box kuning */
+  bottom: 20px;         /* Posisi tinggi tombolnya */
+  right: -25px;         /* Bikin dia nongol dikit ke samping kanan */
+  z-index: -1;          /* Di belakang box kuning */
 }
 
 .musicBtnPeek {
@@ -361,21 +360,19 @@ MAIN CARD
   background: #FCFBD2;
   border: 3px solid #C8F7F2;
   color: #1a1a6e;
-  padding: 6px 12px 6px 18px; /* Padding kiri agak gede biar melengkung halus */
-  border-radius: 0 15px 15px 0; /* Lengkungan cuma di sisi kanan luar */
+  padding: 5px 10px 5px 14px;
+  border-radius: 0 12px 12px 0;
   font-size: 11px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 3px 3px 8px rgba(0,0,0,0.1);
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
   gap: 4px;
 }
+  
 
-.musicBtnPeek:active {
-  transform: translateX(-2px);
-}
   
 h1{
   font-family:'Baloo',cursive,sans-serif;
