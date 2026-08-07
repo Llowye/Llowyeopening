@@ -386,8 +386,39 @@ MAIN CARD
   text-align:center;
   width:100%;
   margin:-1px 0 2px;
+  position: relative;
+}
+  
+/* PEMUTAR MUSIK NGINTIP */
+.audioPlayerPeek {
+  position: absolute;
+  bottom: -22px;        /* Mengatur seberapa jauh tombol nongol/ngintip */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;          /* Naro tombol DI BELAKANG box kuning */
 }
 
+.musicBtnPeek {
+  font-family: 'Baloo', cursive, sans-serif;
+  background: #FCFBD2;
+  border: 3px solid #C8F7F2;
+  color: #1a1a6e;
+  padding: 4px 14px 6px;
+  border-radius: 0 0 15px 15px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.musicBtnPeek:active {
+  transform: translateY(2px);
+}
+  
 h1{
   font-family:'Baloo',cursive,sans-serif;
   color:#e0195a;
@@ -624,6 +655,16 @@ h2{
 
       <a href="https://pricelist.llowyeshop.my.id/" class="openBtn">OPEN</a>
     </div>
+    
+     <!-- PEMUTAR MUSIK NGINTIP DI BELAKANG -->
+      <div class="audioPlayerPeek">
+        <audio id="mySong" src="lagu.mp3" loop></audio>
+        <button class="musicBtnPeek" onclick="toggleMusic()">
+          <span id="musicIcon">🎵</span> Play Music
+        </button>
+      </div>
+
+    </div> <!-- Penutup .profileCard -->
 
     <!-- 10 GIF TUNAS DI BAWAH KARTU -->
     <div class="bottomPlants">
