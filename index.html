@@ -349,7 +349,7 @@ MAIN CARD
 /* PEMUTAR MUSIK KOTAK TUMPUL NGINTIP DI SAMPING */
 .audioPlayerPeek {
   position: absolute;
-  bottom: 35px;
+  bottom: 55px;
   right: -58px;
   z-index: -1;
 }
@@ -808,22 +808,30 @@ if(closeBtn){
   });
 }
 
-/* FUNGSI UTAMA PEMUTAR MUSIK AKHIRNYA DIPASANG DENGAN BENAR */
+/* FUNGSI PEMUTAR MUSIK + UBAH TEKS PLAY / STOP */
 function toggleMusic() {
   const mySong = document.getElementById("mySong");
   const musicIcon = document.getElementById("musicIcon");
+  const musicBtn = document.querySelector(".musicBtnPeek");
 
   if (mySong.paused) {
     mySong.play().then(() => {
       musicIcon.innerText = "⏸️";
+      
+      // Ubah teks tombol jadi Stop
+      musicBtn.childNodes[2].nodeValue = " Stop";
     }).catch(err => {
       console.log("Gagal mutar audio:", err);
     });
   } else {
     mySong.pause();
     musicIcon.innerText = "🎵";
+    
+    // Balikin teks tombol jadi Play
+    musicBtn.childNodes[2].nodeValue = " Play";
   }
 }
+  
 
 </script>
 
