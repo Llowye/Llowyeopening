@@ -440,14 +440,15 @@ h2{
 }
 
    .bgRumput {
-  position: fixed;
-  bottom: 300px;
-  left: 0;
-  width: 100%;
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160%;
   height: auto;
-  z-index: 0;
+  z-index: -1;
   pointer-events: none;
-   }
+  }
 
 </style>
 </head>
@@ -466,6 +467,8 @@ h2{
 <div id="mainContent">
 
   <div class="cardWrapper">
+
+    <img src="rumput.png" alt="rumput" class="bgRumput">
 
     <img src="bebek.gif" class="bebek">
 
@@ -526,8 +529,6 @@ h2{
 <img src="awan.gif" alt="awan" class="bgAwan3">
 <img src="awan.gif" alt="awan" class="bgAwan4">
 <img src="awan.gif" alt="awan" class="bgAwan5">
-
-  <img src="rumput.png" alt="rumput" class="bgRumput">
   
 <script>
 const loader = document.getElementById("leafLoader");
