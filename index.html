@@ -26,63 +26,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Baloo&display=swap" rel="stylesheet">
 
 <style>
-  #confettiContainer{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:9998;
-  overflow:hidden;
-}
- .confetti-piece{
-  position:absolute;
-   width:8px;
-   height:14px;
-  opacity:1;
-  will-change: transform;
-  animation: confettiBurst forwards;
-}
 
-.confetti-square{
-  width:5px;
-  height:14px;
-}
-
-.confetti-circle{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-}
-
-.confetti-star{
-  width:12px;
-  height:12px;
-  clip-path: polygon(
-    50% 0%, 61% 35%, 98% 35%, 68% 57%,
-    79% 91%, 50% 70%, 21% 91%, 32% 57%,
-    2% 35%, 39% 35%
-  );
-  animation: confettiBurst 1.8s cubic-bezier(0.25,0.8,0.25,1) forwards,
-              twinkle 0.4s ease-in-out infinite;
-}
-
-@keyframes twinkle{
-  0%, 100%{ opacity:1; filter:brightness(1); }
-  50%{ opacity:0.5; filter:brightness(1.8) drop-shadow(0 0 4px currentColor); }
-}
-
-  @keyframes confettiBurst{
-  0%{
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25%{
-    transform: translate(var(--dx), var(--dy)) rotate(calc(var(--rot) * 0.4));
-    animation-timing-function: cubic-bezier(0.05, 0.9, 0.1, 1);
-  }
-  100%{
-    transform: translate(calc(var(--dx) + var(--wobble)), 120vh) rotate(var(--rot));
-    animation-timing-function: ease-in;
-  }
-  }
   
 *{
   margin:0;
@@ -461,7 +405,6 @@ h2{
   <div id="leafKanan"></div>
 </div>
 
-<div id="confettiContainer"></div>
 
 <!-- MAIN -->
 <div id="mainContent">
@@ -538,45 +481,6 @@ const leafKanan = document.getElementById("leafKanan");
 
 document.body.style.overflow = "hidden";
 
-function fireConfetti(){
-  const container = document.getElementById("confettiContainer");
-  const colors = ["#ff595e","#ffca3a","#8ac926","#1982c4","#6a4c93","#ff6fb5"];
-  const shapes = ["confetti-square", "confetti-circle", "confetti-star"];
-  const fragment = document.createDocumentFragment();
-
-  for(let i = 0; i < 140; i++){
-    const piece = document.createElement("div");
-    const shape = shapes[Math.floor(Math.random() * shapes.length)];
-    piece.className = "confetti-piece " + shape;
-
-    const fromLeft = i % 2 === 0;
-    
-    piece.style.left = fromLeft ? "0px" : "auto";
-    piece.style.right = fromLeft ? "auto" : "0px";
-    piece.style.top = (35 + Math.random() * 30) + "vh";
-
-    piece.style.background = (shape === "confetti-star")
-      ? "#FFD700"
-      : colors[Math.floor(Math.random() * colors.length)];
-
-    const targetX = (5 + Math.random() * 90) + "vw";
-    const dx = fromLeft ? targetX : "-" + targetX;
-    const dy = "-" + (100 + Math.random() * 30) + "vh"; 
-    const wobble = (Math.random() * 12 - 6) + "vw";
-
-    piece.style.setProperty("--dx", dx);
-    piece.style.setProperty("--dy", dy);
-    piece.style.setProperty("--wobble", wobble);
-    piece.style.setProperty("--rot", (Math.random() * 1080 - 540) + "deg");
-
-    piece.style.animationDuration = (2.5 + Math.random() * 1.5) + "s";
-    piece.style.animationDelay = (Math.random() * 0.15) + "s";
-
-    piece.addEventListener("animationend", () => piece.remove());
-    fragment.appendChild(piece);
-  }
-  container.appendChild(fragment);
-}
 
 /* TIMING ANIMASI UNTUK BUKA TIRAI DAUN & CONFETTI */
 setTimeout(()=>{
@@ -584,9 +488,6 @@ setTimeout(()=>{
   leafKanan.classList.add("open");
 }, 500);
 
-setTimeout(()=>{
-  fireConfetti();
-}, 1800);
 
 setTimeout(()=>{
   loader.style.opacity = "0";
