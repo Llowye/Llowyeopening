@@ -430,8 +430,8 @@ h2{
 }
 #introGif{
   position:absolute;
-  right:-6px;
-  bottom:-6px;
+  right:10px;
+  bottom:75px;
   width:50px;
   height:auto;
   pointer-events:none;
@@ -565,13 +565,13 @@ setTimeout(()=>{
 
 setTimeout(()=>{
   loader.style.opacity = "0";
-  loader.style.transition = "0.6s ease";
+  loader.style.transition = "0.3s ease";
   setTimeout(()=>{
     loader.remove();
     showIntro();
     document.body.style.overflow = "auto";
-  }, 600);
-}, 5000);
+  }, 300);
+}, 3000);
 
   const introFotos = ["foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg"];
 let introIndex = 0;
