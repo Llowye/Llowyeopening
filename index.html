@@ -436,6 +436,23 @@ h2{
   height:auto;
   pointer-events:none;
 }
+
+  #introRow{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  margin-top:10px;
+}
+#introRow #introBtn{
+  margin-top:0;
+}
+#introTag{
+  font-size:11px;
+  color:#888888;
+  white-space:nowrap;
+}
+  
 #introCount{
   font-size:12px;
   color:#1a1a6e;
@@ -534,7 +551,10 @@ h2{
   <div id="introBox">
     <img id="introImg" src="foto1.jpg" alt="foto">
     <div id="introCount">1 / 4</div>
-    <button id="introBtn">Next</button>
+    <div id="introRow">
+      <button id="introBtn">Next</button>
+      <span id="introTag">#PrayforKalimantan</span>
+    </div>
     <img id="introGif" src="bekhpsedih.gif" alt="gif">
   </div>
 </div>
