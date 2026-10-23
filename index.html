@@ -612,7 +612,7 @@ document.getElementById("introBtn").addEventListener("click", ()=>{
     introImg.src = introFotos[introIndex];
     introCount.textContent = (introIndex + 1) + " / " + introFotos.length;
     if(introIndex === introFotos.length - 1){
-      introBtn.textContent = "💔";
+      introBtn.textContent = "it's not enough 💔";
     }
   } else {
     document.getElementById("introOverlay").style.display = "none";
