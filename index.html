@@ -577,23 +577,15 @@ const leafKanan = document.getElementById("leafKanan");
 
 document.body.style.overflow = "hidden";
 
-
-/* TIMING ANIMASI UNTUK BUKA TIRAI DAUN & CONFETTI */
 setTimeout(()=>{
-  leafKiri.classList.add("open");
-  leafKanan.classList.add("open");
-}, 500);
-
+  showIntro();
+}, 2700);
 
 setTimeout(()=>{
-  loader.style.opacity = "0";
-  loader.style.transition = "0.3s ease";
-  setTimeout(()=>{
-    loader.remove();
-    showIntro();
-    document.body.style.overflow = "auto";
-  }, 300);
-}, 3000);
+  loader.remove();
+  document.body.style.overflow = "auto";
+}, 2800);
+  
 
   const introFotos = ["foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg"];
 let introIndex = 0;
